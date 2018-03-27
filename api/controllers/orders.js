@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const Order = require('../models/order'); 
-const Product = require('../models/product');
+const Product = require('../models/prize');
 
 exports.orders_get_all = (req, res, next) => {
   Order.find()
-  .select("product quantity _id")
-  .populate("product", "name")
+  .select("prize quantity _id")
+  .populate("prize", "name")
   .exec()
   .then(datas => {
     res.status(200).json({
@@ -37,7 +37,7 @@ exports.orders_create_order = (req, res, next) => {
     .then(product => {
       if(!product) {
         return res.status(404).json({
-          message: 'Product not found'
+          message: 'Prize not found'
         })
       }
       const order = new Order({
@@ -72,7 +72,7 @@ exports.orders_create_order = (req, res, next) => {
 exports.orders_get_order = (req, res, next) => {
   const id = req.params.id;
   Order.findById(id)
-  .populate("product")
+  .populate("prize")
   .exec()
   .then(data => {
     if(!data) {

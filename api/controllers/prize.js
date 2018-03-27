@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Product = require('../models/product');
+const Product = require('../models/prize');
 
 exports.products_get_all = (req, res, next) => {
   Product.find()
@@ -17,7 +17,7 @@ exports.products_get_all = (req, res, next) => {
           productImage: data.productImage,
           request: {
             type: 'GET',
-            url: 'http:localhost:3000/products/'+ data._id
+            url: 'http:localhost:3000/prizes/'+ data._id
           }
         }
       })
@@ -45,7 +45,7 @@ exports.products_get_product = (req, res, next) => {
         product: data,
         request: {
           type: 'GET',
-          url: 'http:localhost:3000/products/'
+          url: 'http:localhost:3000/prizes/'
         }
       });
     }else {
@@ -72,14 +72,14 @@ exports.products_create_product = (req, res, next) => {
   .then(result => {
     console.log(result);
     res.status(201).json({
-      message: 'Product Created',
+      message: 'Prize Created',
       createdProduct: {
         _id: result._id,
         name: result.name,
         price: result.price,
         request: {
           type: 'GET',
-          url: 'http:localhost:3000/products/'+ result._id
+          url: 'http:localhost:3000/prizes/'+ result._id
         }
       }
     });
@@ -100,10 +100,10 @@ exports.products_update_product = (req, res, next) => {
   .exec()
   .then(result => {
     res.status(200).json({
-      message: 'Product Updated',
+      message: 'Prize Updated',
       request: {
         type: 'GET',
-        url: 'http://localhost:3000/products/'+id
+        url: 'http://localhost:3000/prizes/'+id
       }
     });
   })
@@ -119,10 +119,10 @@ exports.products_delete_product = (req, res, next) => {
   .exec()
   .then(result => {
     res.status(200).json({
-      message: 'Product Deleted',
+      message: 'Prize Deleted',
       request: {
         type: 'POST',
-        url: 'http://localhost:3000/products/',
+        url: 'http://localhost:3000/prizes/',
         body: {name: 'String', price: 'Number'}
       }
     });

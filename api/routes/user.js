@@ -13,4 +13,10 @@ router.post('/login', UserController.user_login)
 /* DELETE USER */
 router.delete('/:id', checkAuth,  UserController.user_delete)
 
+/* Update Product */
+router.patch('/:id', checkAuth, UserController.user_update); 
+
+/* Single product */
+router.get('/:id', checkAuth,  UserController.user_get_user);
+
 module.exports = router;
