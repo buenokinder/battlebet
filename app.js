@@ -9,7 +9,7 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user');
 // database connection
-mongoose.connect('mongodb://localhost/node-restful-shop')
+mongoose.connect('mongodb://heroku_1b437xc5:32fgr3emptcb2agf2ma7v65t4u@ds223009.mlab.com:23009/heroku_1b437xc5')
   .then(() => console.log('MongoDB Successfully connected'))
   .catch((error) => console.log(error)
 );
