@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const productRoutes = require('./api/routes/products');
+const prizeRoutes = require('./api/routes/prize');
 const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user');
 // database connection
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://heroku_1b437xc5:32fgr3emptcb2agf2ma7v65t4u@ds223009.
 app.use(logger('dev'));
 
 // make uploads folder publicly available
-app.use('/uploads', express.static('uploads'));
+//app.use('/uploads', express.static('uploads'));
 
 // body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle request
-app.use('/products', productRoutes);
+app.use('/prizes', prizeRoutes);
 app.use('/orders', orderRoutes);
 app.use('/user', userRoutes);
 

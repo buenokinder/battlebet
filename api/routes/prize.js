@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const checkAuth = require('../middleware/check-auth')
 
-const ProductController = require('../controllers/products')
+const PrizeController = require('../controllers/prize')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -33,18 +33,18 @@ const upload = multer({
 });
 
 /* All product */
-router.get('/', ProductController.products_get_all);
+router.get('/', PrizeController.products_get_all);
 
 /* Single product */
-router.get('/:id', ProductController.products_get_product);
+router.get('/:id', PrizeController.products_get_product);
 
 /* SAVE Product */ 
-router.post('/', checkAuth, upload.single('productImage'), ProductController.products_create_product);
+router.post('/', checkAuth, upload.single('productImage'), PrizeController.products_create_product);
 
 /* Update Product */
-router.patch('/:id', checkAuth, ProductController.products_update_product); 
+router.patch('/:id', checkAuth, PrizeController.products_update_product); 
 
 /* Delete product */ 
-router.delete('/:id', checkAuth, ProductController.products_delete_product);
+router.delete('/:id', checkAuth, PrizeController.products_delete_product);
 
 module.exports = router;
