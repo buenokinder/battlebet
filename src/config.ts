@@ -1,8 +1,8 @@
 // AppName
-export const APP_NAME: string = 'battleBet';
+export const APP_NAME: string = 'battlebet';
 
 // Parse
-export const PARSE_APP_ID: string     = '532343';
+export const PARSE_APP_ID: string     = '5d32ac40-589e-4c7b-8f74-99d026a87b20';
 
 export const PARSE_SERVER_URL: string = 'http://localhost:1337/parse/';
 
@@ -14,7 +14,7 @@ export const GOOGLE_MAPS_WEB: string = 'AIzaSyCsexTjGbyCsGzyARWgU3vH9-09BEl3SQo'
 export const GOOGLE_ANALYTICS: string = '';
 
 // Facebook
-export const facebook_appId: string      = '1429423624023316';
+export const facebook_appId: string      = '793024334240400';
 export const facebook_appVersion: string = 'v2.8';
 
 // Languages

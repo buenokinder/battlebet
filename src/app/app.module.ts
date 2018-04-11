@@ -20,9 +20,10 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
-
+import {ProfilePage} from "../pages/profile/profile";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {AccountEditModalPage} from "../pages/account-edit-modal/account-edit-modal";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './i18n', '.json');
@@ -35,7 +36,9 @@ export function createTranslateLoader(http: Http) {
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage
+    AuthPage,
+    ProfilePage,
+    AccountEditModalPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,9 @@ export function createTranslateLoader(http: Http) {
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage
+    AuthPage, 
+    ProfilePage,
+    AccountEditModalPage
   ],
   providers: [
     StatusBar,
