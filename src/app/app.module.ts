@@ -24,6 +24,9 @@ import {ProfilePage} from "../pages/profile/profile";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AccountEditModalPage} from "../pages/account-edit-modal/account-edit-modal";
+import {UserPasswordPage} from "../pages/user-password/user-password";
+import {LanguageModalComponent} from "../components/language-modal/language-modal";
+import {TabAccountSettingsPage} from "../pages/tab-account-settings/tab-account-settings";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './i18n', '.json');
@@ -38,7 +41,10 @@ export function createTranslateLoader(http: Http) {
     TabsPage,
     AuthPage,
     ProfilePage,
-    AccountEditModalPage
+    AccountEditModalPage,
+    UserPasswordPage,
+    LanguageModalComponent,
+    TabAccountSettingsPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,10 @@ export function createTranslateLoader(http: Http) {
     TabsPage,
     AuthPage, 
     ProfilePage,
-    AccountEditModalPage
+    AccountEditModalPage,
+    UserPasswordPage,
+    LanguageModalComponent,
+    TabAccountSettingsPage
   ],
   providers: [
     StatusBar,

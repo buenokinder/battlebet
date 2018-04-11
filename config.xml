@@ -85,6 +85,6 @@
         <variable name="APP_ID" value="793024334240400" />
         <variable name="APP_NAME" value="battlebet" />
     </plugin>
-    <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-camera" spec="^4.0.2" />
+    <engine name="ios" spec="^4.5.4" />
 </widget>
