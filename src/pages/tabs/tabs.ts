@@ -28,7 +28,7 @@ export class TabsPage {
   constructor(private events: Events,
     
     ) {
-      this.events.subscribe('tabAccount', () => setTimeout(() => this.tabRef.select(0), 100));
-      this.events.subscribe('clearActivity', () => this.tabActivityBadge = 0);
+      //this.events.subscribe('tabAccount', () => setTimeout(() => this.tabRef.select(0), 100));
+      //this.events.subscribe('clearActivity', () => this.tabActivityBadge = 0);
   }
 }
