@@ -1,13 +1,14 @@
 import {Component} from "@angular/core";
 import {Validators, FormBuilder} from "@angular/forms";
 import {App, AlertController, NavController} from "ionic-angular";
-import { Facebook } from '@ionic-native/facebook';
+import { Facebook , FacebookLoginResponse} from '@ionic-native/facebook'
+import {FacebookService} from "ng2-facebook-sdk";
 import {TabsPage} from "../tabs/tabs";
 import {IonicUtilProvider} from "../../providers/ionic-util";
 import {UserProvider} from "../../providers/user";
 import {ExternalLibProvider} from "../../providers/external-lib";
 import {APP_NAME} from "../../config";
-
+import {TabAccountSettingsPage} from "../tab-account-settings/tab-account-settings";
 declare const Parse: any;
 declare const FB: any;
 
@@ -23,7 +24,7 @@ export class AuthPage {
     facebookNative: Facebook;
     appName:string = APP_NAME;
     facebookInitialised:boolean =false;
-
+    facebookBrowser: FacebookService;
     formLogin: any;
     formSignup: any;
 
@@ -37,7 +38,7 @@ export class AuthPage {
                 private provider: UserProvider,
                 private alertCtrl: AlertController,
                 private util: IonicUtilProvider,
-                private fb: Facebook,
+                private fb: FacebookService,
                 private formBuilder: FormBuilder,
                 private app: App,
                 private lib: ExternalLibProvider,
@@ -45,7 +46,8 @@ export class AuthPage {
         // Google Analytics
      
         // Define Facebook Browser and Native
- 
+        this.facebookNative = this.facebook;
+       // this.facebookNative = Facebook;
         this.cordova        = this.util.cordova;
 
         if (!this.cordova) {
@@ -207,7 +209,11 @@ export class AuthPage {
     }
 
     loginFacebook(): void {
+        // new LoginOptions;
 
+        // this.fb.login()
+        // .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+        // .catch(e => console.log('Error logging into Facebook', e));
 
         this.util.onLoading();
         this.facebook.getLoginStatus().then(response => {
@@ -256,17 +262,18 @@ export class AuthPage {
                                 .then(this.provider.updateWithFacebookData())
                                 .then(result => {
                                     this.util.endLoading();
-                                    // this.navCtrl.push(UserAvatarPage);
+                                    this.navCtrl.push(TabAccountSettingsPage);
                                 });
 
                         } else {
                             // Old UserProvider
                             console.info('UserProvider logged in through Facebook!', user);
+                            this.navCtrl.push(TabAccountSettingsPage);
                             this.provider.facebookSyncProfile(fbData)
                                 .then(this.provider.updateWithFacebookData())
                                 .then(result => {
                                     this.util.endLoading();
-                                    this.navCtrl.push(TabsPage);
+                                    this.navCtrl.push(TabAccountSettingsPage);
                                 });
 
                         }

@@ -14,7 +14,7 @@ export const GOOGLE_MAPS_WEB: string = 'AIzaSyCsexTjGbyCsGzyARWgU3vH9-09BEl3SQo'
 export const GOOGLE_ANALYTICS: string = '';
 
 // Facebook
-export const facebook_appId: string      = '793024334240400';
+export const facebook_appId: string      = '1429423624023316';
 export const facebook_appVersion: string = 'v2.8';
 
 // Languages
@@ -27,7 +27,7 @@ export const languages: [any]         = [
     {
         name: 'Portugues',
         code: 'pt',
-        flag: 'br'
+        flag: 'pt'
     },
     {
         name: 'German',
@@ -76,4 +76,4 @@ export const languages: [any]         = [
     },
 
 ];
-export const language_default: string = 'br';
+export const language_default: string = 'pt';
