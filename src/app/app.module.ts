@@ -8,6 +8,7 @@ import {language_default, languages} from "../config";
 import _ from "underscore";
 import { IonicStorageModule } from "@ionic/storage";
 import { Facebook } from '@ionic-native/facebook';
+import { HttpClientModule } from '@angular/common/http';
 // External Libs
 // Providers
 import {ProvidersModule} from "../providers/providers.module";
@@ -55,6 +56,7 @@ export function createTranslateLoader(http: Http) {
     TabAccountSettingsPage
   ],
   imports: [
+      HttpClientModule,
     BrowserModule,
     ProvidersModule,
     IonicStorageModule.forRoot({
