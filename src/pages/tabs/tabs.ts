@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Tabs, Events} from "ionic-angular";
+import { GamesPage } from '../games/games';
 import { AboutPage } from '../about/about';
 import { ProfilePage } from '../profile/profile';
 import { HomePage } from '../home/home';
@@ -16,6 +17,8 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = AboutPage;
+  tab4Root = GamesPage;
+
   tabProfile = ProfilePage;
   tabAccount = TabAccountSettingsPage;
 

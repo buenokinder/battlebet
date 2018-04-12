@@ -8,6 +8,7 @@ import {language_default, languages} from "../config";
 import _ from "underscore";
 import { IonicStorageModule } from "@ionic/storage";
 import { Facebook } from '@ionic-native/facebook';
+import { HttpClientModule } from '@angular/common/http';
 // External Libs
 // Providers
 import {ProvidersModule} from "../providers/providers.module";
@@ -21,12 +22,17 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
 import {ProfilePage} from "../pages/profile/profile";
+import { GamesPage } from '../pages/games/games';
+import { FixturePage } from '../pages/fixture/fixture';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AccountEditModalPage} from "../pages/account-edit-modal/account-edit-modal";
 import {UserPasswordPage} from "../pages/user-password/user-password";
 import {LanguageModalComponent} from "../components/language-modal/language-modal";
 import {TabAccountSettingsPage} from "../pages/tab-account-settings/tab-account-settings";
+import { OddsProvider } from '../providers/odds/odds';
+import {MarketPage} from "../pages/market/market";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './i18n', '.json');
@@ -37,6 +43,9 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     AboutPage,
     ContactPage,
+      GamesPage,
+      MarketPage,
+      FixturePage,
     HomePage,
     TabsPage,
     AuthPage,
@@ -47,6 +56,7 @@ export function createTranslateLoader(http: Http) {
     TabAccountSettingsPage
   ],
   imports: [
+      HttpClientModule,
     BrowserModule,
     ProvidersModule,
     IonicStorageModule.forRoot({
@@ -65,9 +75,12 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     AboutPage,
     ContactPage,
+      MarketPage,
+      FixturePage,
+      GamesPage,
     HomePage,
     TabsPage,
-    AuthPage, 
+    AuthPage,
     ProfilePage,
     AccountEditModalPage,
     UserPasswordPage,
@@ -79,7 +92,8 @@ export function createTranslateLoader(http: Http) {
     SplashScreen,
     Facebook,
     FacebookService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    OddsProvider
   ]
 })
 export class AppModule {
