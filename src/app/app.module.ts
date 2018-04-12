@@ -20,9 +20,13 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
+import { GamesPage } from '../pages/games/games';
+import { FixturePage } from '../pages/fixture/fixture';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { OddsProvider } from '../providers/odds/odds';
+import {MarketPage} from "../pages/market/market";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './i18n', '.json');
@@ -33,6 +37,9 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     AboutPage,
     ContactPage,
+      GamesPage,
+      MarketPage,
+      FixturePage,
     HomePage,
     TabsPage,
     AuthPage
@@ -56,6 +63,9 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     AboutPage,
     ContactPage,
+      MarketPage,
+      FixturePage,
+      GamesPage,
     HomePage,
     TabsPage,
     AuthPage
@@ -65,7 +75,8 @@ export function createTranslateLoader(http: Http) {
     SplashScreen,
     Facebook,
     FacebookService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    OddsProvider
   ]
 })
 export class AppModule {

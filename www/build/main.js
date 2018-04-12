@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 107:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_auth_auth__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_auth_auth__ = __webpack_require__(115);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -36,7 +36,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/carlosbueno/startUp/battleBet/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Ionic!</h2>\n  <p>\n    This starter project comes with simple tabs-based layout for apps\n    that are going to primarily use a Tabbed UI.\n  </p>\n  <p>\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n    update any existing page or create new pages.\n  </p>\n\n  <ion-list>\n   \n    <ion-item (click)="logout()">{{\'Logout\'|translate}}</ion-item>\n</ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/carlosbueno/startUp/battleBet/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <h2>Welcome to Ionic!</h2>\n\n  <p>\n\n    This starter project comes with simple tabs-based layout for apps\n\n    that are going to primarily use a Tabbed UI.\n\n  </p>\n\n  <p>\n\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n\n    update any existing page or create new pages.\n\n  </p>\n\n\n\n  <ion-list>\n\n   \n\n    <ion-item (click)="logout()">{{\'Logout\'|translate}}</ion-item>\n\n</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_user__["a" /* UserProvider */],
@@ -49,18 +49,18 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 108:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parse_push__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_util__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_pouchdb__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parse_push__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_util__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_pouchdb__ = __webpack_require__(330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_pouchdb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_pouchdb__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_underscore__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_underscore__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_underscore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -326,13 +326,13 @@ var UserProvider = (function () {
 
 /***/ }),
 
-/***/ 109:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ParsePushProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -426,7 +426,7 @@ var ParsePushProvider = (function () {
     };
     ParsePushProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]])
     ], ParsePushProvider);
     return ParsePushProvider;
 }());
@@ -435,15 +435,15 @@ var ParsePushProvider = (function () {
 
 /***/ }),
 
-/***/ 110:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonicUtilProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_translate__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_translate__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_underscore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -561,9 +561,9 @@ var IonicUtilProvider = (function () {
     };
     IonicUtilProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_2_ng2_translate__["c" /* TranslateService */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], IonicUtilProvider);
@@ -574,20 +574,20 @@ var IonicUtilProvider = (function () {
 
 /***/ }),
 
-/***/ 113:
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_ionic_util__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_external_lib__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__config__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_ionic_util__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_external_lib__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__config__ = __webpack_require__(57);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -869,7 +869,7 @@ var AuthPage = (function () {
     };
     AuthPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-auth',template:/*ion-inline-start:"/Users/carlosbueno/startUp/battleBet/src/pages/auth/auth.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <ion-title>{{appName}}</ion-title>\n    </ion-navbar>\n\n    <ion-toolbar color="primary">\n        <ion-segment [(ngModel)]="authType" color="primary">\n            <ion-segment-button value="login">{{\'Login\' | translate}}</ion-segment-button>\n            <ion-segment-button value="signup">{{\'Signup\' | translate}}</ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n\n</ion-header>\n<ion-content>\n\n    <div [ngSwitch]="authType">\n        <form *ngSwitchCase="\'login\'" [formGroup]="formLogin" #rFormLogin="ngForm" (ngSubmit)="login(rFormLogin)">\n            <ion-list>\n                <ion-item>\n                    <ion-label floating>{{\'Username\' | translate}}</ion-label>\n                    <ion-input type="text" formControlName="username"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formLogin.controls.username.pristine && !formLogin.controls.username.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username?.errors?.minlength">\n                        {{\'Password must have more than 4 characters\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{\'Password\'|translate}}</ion-label>\n                    <ion-input [type]="inputPasswordType" formControlName="password"></ion-input>\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n                    </a>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formLogin.controls.password.pristine && !formLogin.controls.password.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password?.errors?.minlength">\n                        {{\'Password must have more than 6 characters\' | translate}}\n                    </p>\n\n                </ion-item>\n            </ion-list>\n            <ion-row>\n                <ion-col>\n                    <a ion-button block clear full (click)="resetPassword()">{{\'Forgot Password\'|translate}}</a>\n                </ion-col>\n                <ion-col>\n                    <button ion-button block full color="primary" type="submit">{{\'Log in\' | translate}}\n                    </button>\n                </ion-col>\n            </ion-row>\n        </form>\n\n        <form *ngSwitchCase="\'signup\'" [formGroup]="formSignup" #rFormSignup="ngForm"\n              (ngSubmit)="createUser(rFormSignup)">\n            <ion-list>\n                <ion-item>\n                    <ion-label floating>{{\'Name\'| translate}} *</ion-label>\n                    <ion-input type="text" formControlName="name"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.name.pristine && !formSignup.controls.name.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.name.pristine && formSignup.controls.name.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{\'Email\' | translate}} *</ion-label>\n                    <ion-input #email type="email" formControlName="email"\n                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.email.pristine && !formSignup.controls.email.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.email.pristine && formSignup.controls.email.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                </ion-item>\n\n                <!--Username-->\n                <ion-item>\n                    <ion-label floating>{{\'Username\' | translate}} *</ion-label>\n                    <ion-input #username type="text" formControlName="username"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.username.pristine && !formSignup.controls.username.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.username.pristine && formSignup.controls.username.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{ \'Password\' | translate }} *</ion-label>\n                    <ion-input #password [type]="inputPasswordType" formControlName="password"></ion-input>\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n                    </a>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.password.pristine && !formSignup.controls.password.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password?.errors?.minlength">\n                        {{\'Password must have more than 5 characters\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{\'Confirm password\' | translate}} *</ion-label>\n                    <ion-input [type]="inputPasswordType" formControlName="passwordConfirmation"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.passwordConfirmation.pristine && !formSignup.controls.passwordConfirmation.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation?.errors?.minlength">\n                        {{\'Password must have more than 5 characters\' | translate}}\n                    </p>\n                </ion-item>\n            </ion-list>\n            <ion-row>\n                <ion-col>\n                    <button type="submit" full ion-button block color="primary">{{\'Sign up\' | translate}}</button>\n                </ion-col>\n            </ion-row>\n        </form>\n    </div>\n\n    <ion-row>\n        <ion-col><a ion-button block icon-left color="facebook" (click)="loginFacebook()">\n            <ion-icon name="logo-facebook"></ion-icon>\n            {{\'Signup with Facebook\' | translate }}</a>\n        </ion-col>\n    </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"/Users/carlosbueno/startUp/battleBet/src/pages/auth/auth.html"*/
+            selector: 'page-auth',template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\auth\auth.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>{{appName}}</ion-title>\n\n    </ion-navbar>\n\n\n\n    <ion-toolbar color="primary">\n\n        <ion-segment [(ngModel)]="authType" color="primary">\n\n            <ion-segment-button value="login">{{\'Login\' | translate}}</ion-segment-button>\n\n            <ion-segment-button value="signup">{{\'Signup\' | translate}}</ion-segment-button>\n\n        </ion-segment>\n\n    </ion-toolbar>\n\n\n\n</ion-header>\n\n<ion-content>\n\n\n\n    <div [ngSwitch]="authType">\n\n        <form *ngSwitchCase="\'login\'" [formGroup]="formLogin" #rFormLogin="ngForm" (ngSubmit)="login(rFormLogin)">\n\n            <ion-list>\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Username\' | translate}}</ion-label>\n\n                    <ion-input type="text" formControlName="username"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formLogin.controls.username.pristine && !formLogin.controls.username.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username?.errors?.minlength">\n\n                        {{\'Password must have more than 4 characters\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Password\'|translate}}</ion-label>\n\n                    <ion-input [type]="inputPasswordType" formControlName="password"></ion-input>\n\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n\n                    </a>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formLogin.controls.password.pristine && !formLogin.controls.password.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password?.errors?.minlength">\n\n                        {{\'Password must have more than 6 characters\' | translate}}\n\n                    </p>\n\n\n\n                </ion-item>\n\n            </ion-list>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <a ion-button block clear full (click)="resetPassword()">{{\'Forgot Password\'|translate}}</a>\n\n                </ion-col>\n\n                <ion-col>\n\n                    <button ion-button block full color="primary" type="submit">{{\'Log in\' | translate}}\n\n                    </button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </form>\n\n\n\n        <form *ngSwitchCase="\'signup\'" [formGroup]="formSignup" #rFormSignup="ngForm"\n\n              (ngSubmit)="createUser(rFormSignup)">\n\n            <ion-list>\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Name\'| translate}} *</ion-label>\n\n                    <ion-input type="text" formControlName="name"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.name.pristine && !formSignup.controls.name.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.name.pristine && formSignup.controls.name.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Email\' | translate}} *</ion-label>\n\n                    <ion-input #email type="email" formControlName="email"\n\n                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.email.pristine && !formSignup.controls.email.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.email.pristine && formSignup.controls.email.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <!--Username-->\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Username\' | translate}} *</ion-label>\n\n                    <ion-input #username type="text" formControlName="username"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.username.pristine && !formSignup.controls.username.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.username.pristine && formSignup.controls.username.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{ \'Password\' | translate }} *</ion-label>\n\n                    <ion-input #password [type]="inputPasswordType" formControlName="password"></ion-input>\n\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n\n                    </a>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.password.pristine && !formSignup.controls.password.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password?.errors?.minlength">\n\n                        {{\'Password must have more than 5 characters\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Confirm password\' | translate}} *</ion-label>\n\n                    <ion-input [type]="inputPasswordType" formControlName="passwordConfirmation"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.passwordConfirmation.pristine && !formSignup.controls.passwordConfirmation.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation?.errors?.minlength">\n\n                        {{\'Password must have more than 5 characters\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n            </ion-list>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <button type="submit" full ion-button block color="primary">{{\'Sign up\' | translate}}</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </form>\n\n    </div>\n\n\n\n    <ion-row>\n\n        <ion-col><a ion-button block icon-left color="facebook" (click)="loginFacebook()">\n\n            <ion-icon name="logo-facebook"></ion-icon>\n\n            {{\'Signup with Facebook\' | translate }}</a>\n\n        </ion-col>\n\n    </ion-row>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\auth\auth.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_6__providers_user__["a" /* UserProvider */],
@@ -887,7 +887,7 @@ var AuthPage = (function () {
 
 /***/ }),
 
-/***/ 124:
+/***/ 127:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -900,11 +900,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 124;
+webpackEmptyAsyncContext.id = 127;
 
 /***/ }),
 
-/***/ 166:
+/***/ 168:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -917,19 +917,20 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 166;
+webpackEmptyAsyncContext.id = 168;
 
 /***/ }),
 
-/***/ 218:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__about_about__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__contact_contact__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__games_games__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_about__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__contact_contact__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(109);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -943,14 +944,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TabsPage = (function () {
     function TabsPage() {
-        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */];
-        this.tab2Root = __WEBPACK_IMPORTED_MODULE_1__about_about__["a" /* AboutPage */];
-        this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
+        this.tab1Root = __WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */];
+        this.tab2Root = __WEBPACK_IMPORTED_MODULE_2__about_about__["a" /* AboutPage */];
+        this.tab3Root = __WEBPACK_IMPORTED_MODULE_3__contact_contact__["a" /* ContactPage */];
+        this.tab4Root = __WEBPACK_IMPORTED_MODULE_1__games_games__["a" /* GamesPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/carlosbueno/startUp/battleBet/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/carlosbueno/startUp/battleBet/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Games" tabIcon="ios-football"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -961,13 +964,176 @@ var TabsPage = (function () {
 
 /***/ }),
 
-/***/ 219:
+/***/ 222:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GamesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fixture_fixture__ = __webpack_require__(224);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var GamesPage = (function () {
+    function GamesPage(navCtrl, oddsProvider) {
+        this.navCtrl = navCtrl;
+        this.oddsProvider = oddsProvider;
+        this.fixtureid = '';
+        this.getFixtures();
+    }
+    GamesPage.prototype.getFixtures = function () {
+        var _this = this;
+        this.oddsProvider.getFixtures()
+            .then(function (data) {
+            _this.fixtures = data["data"]["fixtures"];
+            console.log(_this.fixtures);
+        });
+    };
+    GamesPage.prototype.pushFixture = function (id) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__fixture_fixture__["a" /* FixturePage */], { id: id });
+    };
+    GamesPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-games',template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\games\games.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Games\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list inset>\n\n    <ion-item *ngFor="let fixture of fixtures">\n\n      <ion-avatar item-start>\n\n        <ion-icon name="ios-football" ></ion-icon>\n\n      </ion-avatar>\n\n      <h2>{{fixture.name}}</h2>\n\n      <ion-note item-end>{{fixture.startTime | date:"short"}}</ion-note>\n\n      <button ion-button color="secondary" block (click)="pushFixture(fixture.id)">Bet</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\games\games.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */]])
+    ], GamesPage);
+    return GamesPage;
+}());
+
+//# sourceMappingURL=games.js.map
+
+/***/ }),
+
+/***/ 224:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FixturePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__market_market__ = __webpack_require__(225);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var FixturePage = (function () {
+    function FixturePage(navCtrl, oddsProvider, navParams) {
+        this.navCtrl = navCtrl;
+        this.oddsProvider = oddsProvider;
+        this.navParams = navParams;
+        this.getMarkets(this.navParams.get('id'));
+    }
+    FixturePage.prototype.getMarkets = function (id) {
+        var _this = this;
+        this.oddsProvider.getMarkets(id)
+            .then(function (data) {
+            _this.fixture = data["data"]["name"];
+            _this.markets = data["data"]["markets"];
+            console.log(_this.markets);
+        });
+    };
+    FixturePage.prototype.pushMarket = function (id) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__market_market__["a" /* MarketPage */], { id: id });
+    };
+    FixturePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-fixture',template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\fixture\fixture.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{fixture}}\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list inset>\n\n    <ion-item *ngFor="let market of markets">\n\n      <ion-avatar item-start>\n\n        <ion-icon name="ios-football" ></ion-icon>\n\n      </ion-avatar>\n\n      <h2>{{market.name}}</h2>\n\n      <button ion-button color="secondary" block (click)="pushMarket(market.id)">Bet</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\fixture\fixture.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], FixturePage);
+    return FixturePage;
+}());
+
+//# sourceMappingURL=fixture.js.map
+
+/***/ }),
+
+/***/ 225:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarketPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__ = __webpack_require__(56);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MarketPage = (function () {
+    function MarketPage(navCtrl, oddsProvider, navParams) {
+        this.navCtrl = navCtrl;
+        this.oddsProvider = oddsProvider;
+        this.navParams = navParams;
+        this.getSelections(this.navParams.get('id'));
+    }
+    MarketPage_1 = MarketPage;
+    MarketPage.prototype.getSelections = function (id) {
+        var _this = this;
+        this.oddsProvider.getSelections(id)
+            .then(function (data) {
+            _this.selections = data["data"]["selections"];
+            console.log(_this.selections);
+        });
+    };
+    MarketPage.prototype.pushMarket = function (id) {
+        this.navCtrl.push(MarketPage_1, { id: id });
+    };
+    MarketPage.prototype.selectOdd = function (odd) {
+        this.selectedodd = odd;
+    };
+    MarketPage = MarketPage_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-market',template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\market\market.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Bet\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n      <ion-list>\n\n        <button (click)="selectOdd(selection.odd)" *ngFor="let selection of selections" ion-button>{{selection.name}}<br>{{selection.odd}}</button>\n\n      </ion-list>\n\n\n\n    <ion-list>\n\n\n\n        <ion-item>\n\n            <ion-label fixed>Odd</ion-label>\n\n            <ion-input *ngIf="selectedodd" disabled="true" placeholder="{{selectedodd}}"></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n        <ion-label fixed>Value</ion-label>\n\n        <ion-input type="text"></ion-input>\n\n    </ion-item>\n\n\n\n\n\n    </ion-list>\n\n\n\n    <div padding>\n\n        <button ion-button color="primary" block>Bet</button>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\market\market.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], MarketPage);
+    return MarketPage;
+    var MarketPage_1;
+}());
+
+//# sourceMappingURL=market.js.map
+
+/***/ }),
+
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -991,9 +1157,9 @@ var AboutPage = (function () {
     };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/carlosbueno/startUp/battleBet/src/pages/about/about.html"*/'<ion-header>\n  <ion-toolbar color="primary">\n      <ion-title>\n          {{\'About\' | translate}}\n      </ion-title>\n      <ion-buttons start>\n          <button ion-button (click)="dismiss()">\n              <ion-icon name="close"></ion-icon>\n          </button>\n      </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/carlosbueno/startUp/battleBet/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-toolbar color="primary">\n\n      <ion-title>\n\n          {{\'About\' | translate}}\n\n      </ion-title>\n\n      <ion-buttons start>\n\n          <button ion-button (click)="dismiss()">\n\n              <ion-icon name="close"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\about\about.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
     ], AboutPage);
     return AboutPage;
 }());
@@ -1002,13 +1168,13 @@ var AboutPage = (function () {
 
 /***/ }),
 
-/***/ 220:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1026,7 +1192,7 @@ var ContactPage = (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/Users/carlosbueno/startUp/battleBet/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/carlosbueno/startUp/battleBet/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\work\apps\battlebet\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], ContactPage);
@@ -1037,14 +1203,14 @@ var ContactPage = (function () {
 
 /***/ }),
 
-/***/ 221:
+/***/ 228:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExternalLibProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_facebook_sdk__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_facebook_sdk__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(57);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1099,13 +1265,13 @@ var ExternalLibProvider = (function () {
 
 /***/ }),
 
-/***/ 235:
+/***/ 242:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(260);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1113,32 +1279,37 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 254:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export createTranslateLoader */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_underscore__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_underscore__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_underscore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_facebook__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_providers_module__ = __webpack_require__(337);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ng2_translate__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng2_facebook_sdk__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_about_about__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_contact_contact__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_home_home__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_tabs_tabs__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_auth_auth__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_status_bar__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_splash_screen__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_facebook__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_providers_module__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng2_translate__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng2_facebook_sdk__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_about_about__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_contact_contact__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_home_home__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_tabs_tabs__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_auth_auth__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_games_games__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_fixture_fixture__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_odds_odds__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_market_market__ = __webpack_require__(225);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1148,6 +1319,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1171,8 +1343,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 function createTranslateLoader(http) {
-    return new __WEBPACK_IMPORTED_MODULE_10_ng2_translate__["d" /* TranslateStaticLoader */](http, './i18n', '.json');
+    return new __WEBPACK_IMPORTED_MODULE_11_ng2_translate__["d" /* TranslateStaticLoader */](http, './i18n', '.json');
 }
 var AppModule = (function () {
     function AppModule(translate, config, platform) {
@@ -1217,21 +1393,25 @@ var AppModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_about_about__["a" /* AboutPage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_contact_contact__["a" /* ContactPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_auth_auth__["a" /* AuthPage */]
+                __WEBPACK_IMPORTED_MODULE_13__pages_about_about__["a" /* AboutPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_contact_contact__["a" /* ContactPage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_games_games__["a" /* GamesPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_market_market__["a" /* MarketPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_fixture_fixture__["a" /* FixturePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_auth_auth__["a" /* AuthPage */]
             ],
             imports: [
+                __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_9__providers_providers_module__["a" /* ProvidersModule */],
+                __WEBPACK_IMPORTED_MODULE_10__providers_providers_module__["a" /* ProvidersModule */],
                 __WEBPACK_IMPORTED_MODULE_7__ionic_storage__["a" /* IonicStorageModule */].forRoot({
                     name: '__battlebet',
                     driverOrder: ['indexeddb', 'sqlite', 'websql']
                 }),
-                __WEBPACK_IMPORTED_MODULE_10_ng2_translate__["b" /* TranslateModule */].forRoot({
-                    provide: __WEBPACK_IMPORTED_MODULE_10_ng2_translate__["a" /* TranslateLoader */],
+                __WEBPACK_IMPORTED_MODULE_11_ng2_translate__["b" /* TranslateModule */].forRoot({
+                    provide: __WEBPACK_IMPORTED_MODULE_11_ng2_translate__["a" /* TranslateLoader */],
                     useFactory: (createTranslateLoader),
                     deps: [__WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */]]
                 }),
@@ -1242,23 +1422,27 @@ var AppModule = (function () {
             bootstrap: [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["d" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_about_about__["a" /* AboutPage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_contact_contact__["a" /* ContactPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_auth_auth__["a" /* AuthPage */]
+                __WEBPACK_IMPORTED_MODULE_13__pages_about_about__["a" /* AboutPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_contact_contact__["a" /* ContactPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_market_market__["a" /* MarketPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_fixture_fixture__["a" /* FixturePage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_games_games__["a" /* GamesPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_auth_auth__["a" /* AuthPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_17__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_18__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__["a" /* SplashScreen */],
                 __WEBPACK_IMPORTED_MODULE_8__ionic_native_facebook__["a" /* Facebook */],
-                __WEBPACK_IMPORTED_MODULE_11_ng2_facebook_sdk__["a" /* FacebookService */],
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicErrorHandler */] }
+                __WEBPACK_IMPORTED_MODULE_12_ng2_facebook_sdk__["a" /* FacebookService */],
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicErrorHandler */] },
+                __WEBPACK_IMPORTED_MODULE_22__providers_odds_odds__["a" /* OddsProvider */]
             ]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_10_ng2_translate__["c" /* TranslateService */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_11_ng2_translate__["c" /* TranslateService */],
             __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["c" /* Config */],
-            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["i" /* Platform */]])
+            __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["j" /* Platform */]])
     ], AppModule);
     return AppModule;
 }());
@@ -1267,19 +1451,19 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 296:
+/***/ 302:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_auth_auth__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_parse_push__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_auth_auth__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_parse_push__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1325,9 +1509,9 @@ var MyApp = (function () {
     };
     ;
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/carlosbueno/startUp/battleBet/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/carlosbueno/startUp/battleBet/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\work\apps\battlebet\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\work\apps\battlebet\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_7__providers_parse_push__["a" /* ParsePushProvider */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_7__providers_parse_push__["a" /* ParsePushProvider */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
@@ -1336,22 +1520,22 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 337:
+/***/ 346:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export sharedProviders */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProvidersModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_util__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__logging__ = __webpack_require__(338);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth__ = __webpack_require__(339);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__user__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__parse_file__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__parse_push__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__user_data__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__external_lib__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_util__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__logging__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__user__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__parse_file__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__parse_push__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__user_data__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__external_lib__ = __webpack_require__(228);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1397,7 +1581,7 @@ var ProvidersModule = (function () {
 
 /***/ }),
 
-/***/ 338:
+/***/ 347:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1442,7 +1626,7 @@ var LoggingProvider = (function () {
 
 /***/ }),
 
-/***/ 339:
+/***/ 348:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1483,7 +1667,7 @@ var AuthProvider = (function () {
 
 /***/ }),
 
-/***/ 340:
+/***/ 349:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1521,7 +1705,7 @@ var ParseFileProvider = (function () {
 
 /***/ }),
 
-/***/ 341:
+/***/ 350:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1591,6 +1775,77 @@ var UserDataProvider = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OddsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/*
+  Generated class for the OddsProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var OddsProvider = (function () {
+    function OddsProvider(http) {
+        this.http = http;
+        this.apiUrl = 'https://odds-api-issue-5-dev.casinoportugal.pt/api/v1/';
+        console.log('Hello OddsProvider Provider');
+    }
+    OddsProvider.prototype.getFixtures = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl + 'competitions/61').subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
+    OddsProvider.prototype.getMarkets = function (id) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl + 'fixtures/' + id).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
+    OddsProvider.prototype.getSelections = function (id) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl + 'odds/' + id).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
+    OddsProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], OddsProvider);
+    return OddsProvider;
+}());
+
+//# sourceMappingURL=odds.js.map
+
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_NAME; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PARSE_APP_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PARSE_SERVER_URL; });
@@ -1601,9 +1856,9 @@ var UserDataProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return languages; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return language_default; });
 // AppName
-var APP_NAME = 'battleBet';
+var APP_NAME = 'battlebet';
 // Parse
-var PARSE_APP_ID = '532343';
+var PARSE_APP_ID = 'c7758f4e-0b09-4a6b-a21a-58b28b74b4b9';
 var PARSE_SERVER_URL = 'http://localhost:1337/parse/';
 // Google Maps
 var GOOGLE_MAPS_WEB = 'AIzaSyCsexTjGbyCsGzyARWgU3vH9-09BEl3SQo';
@@ -1675,5 +1930,5 @@ var language_default = 'br';
 
 /***/ })
 
-},[235]);
+},[242]);
 //# sourceMappingURL=main.js.map

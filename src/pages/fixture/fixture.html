@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{fixture}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+    <ion-item *ngFor="let market of markets">
+      <ion-avatar item-start>
+        <ion-icon name="ios-football" ></ion-icon>
+      </ion-avatar>
+      <h2>{{market.name}}</h2>
+      <button ion-button color="secondary" block (click)="pushMarket(market.id)">Bet</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Games
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+    <ion-item *ngFor="let fixture of fixtures">
+      <ion-avatar item-start>
+        <ion-icon name="ios-football" ></ion-icon>
+      </ion-avatar>
+      <h2>{{fixture.name}}</h2>
+      <ion-note item-end>{{fixture.startTime | date:"short"}}</ion-note>
+      <button ion-button color="secondary" block (click)="pushFixture(fixture.id)">Bet</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

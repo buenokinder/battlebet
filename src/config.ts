@@ -1,8 +1,8 @@
 // AppName
-export const APP_NAME: string = 'battleBet';
+export const APP_NAME: string = 'battlebet';
 
 // Parse
-export const PARSE_APP_ID: string     = '532343';
+export const PARSE_APP_ID: string     = 'c7758f4e-0b09-4a6b-a21a-58b28b74b4b9';
 
 export const PARSE_SERVER_URL: string = 'http://localhost:1337/parse/';
 
