@@ -20,11 +20,16 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
+import {ProfilePage} from "../pages/profile/profile";
 import { GamesPage } from '../pages/games/games';
 import { FixturePage } from '../pages/fixture/fixture';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {AccountEditModalPage} from "../pages/account-edit-modal/account-edit-modal";
+import {UserPasswordPage} from "../pages/user-password/user-password";
+import {LanguageModalComponent} from "../components/language-modal/language-modal";
+import {TabAccountSettingsPage} from "../pages/tab-account-settings/tab-account-settings";
 import { OddsProvider } from '../providers/odds/odds';
 import {MarketPage} from "../pages/market/market";
 
@@ -42,7 +47,12 @@ export function createTranslateLoader(http: Http) {
       FixturePage,
     HomePage,
     TabsPage,
-    AuthPage
+    AuthPage,
+    ProfilePage,
+    AccountEditModalPage,
+    UserPasswordPage,
+    LanguageModalComponent,
+    TabAccountSettingsPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +78,12 @@ export function createTranslateLoader(http: Http) {
       GamesPage,
     HomePage,
     TabsPage,
-    AuthPage
+    AuthPage,
+    ProfilePage,
+    AccountEditModalPage,
+    UserPasswordPage,
+    LanguageModalComponent,
+    TabAccountSettingsPage
   ],
   providers: [
     StatusBar,

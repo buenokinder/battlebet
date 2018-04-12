@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {UserProvider} from "../../providers/user";
-import {App} from 'ionic-angular';
+import {App, ModalController} from 'ionic-angular';
 import {AuthPage} from "../../pages/auth/auth";
+import {AccountEditModalPage} from "../account-edit-modal/account-edit-modal";
 
 @Component({
   selector: 'page-home',
@@ -12,6 +13,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
             private User: UserProvider,
+            private modalCtrl: ModalController,
            private app: App) {
 
   }
@@ -20,5 +22,9 @@ export class HomePage {
     this.User.logout();
     this.User.cleanDBFollowing();
     this.app.getRootNav().setRoot(AuthPage);
+}
+
+editModal(): void {
+  this.modalCtrl.create(AccountEditModalPage).present();
 }
 }
