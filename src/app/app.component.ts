@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {HomePage} from "../pages/home/home";
 import {AuthPage} from "../pages/auth/auth";
 
-import {PARSE_APP_ID, PARSE_SERVER_URL} from "../config";
+import {PARSE_APP_ID, PARSE_SERVER_URL, PARSE_JAVASCRIPT_ID} from "../config";
 import {ParsePushProvider} from "../providers/parse-push";
 
 
@@ -40,7 +40,8 @@ export class MyApp implements OnInit {
   };
 
   ngOnInit() {
-    Parse.initialize(PARSE_APP_ID);
+    Parse.initialize(PARSE_APP_ID,PARSE_JAVASCRIPT_ID);//,PARSE_JAVASCRIPT_ID,PARSE_MASTER_KEY);
+    //Parse.JavaScriptKey = PARSE_JAVASCRIPT_ID;
     Parse.serverURL = PARSE_SERVER_URL;
   };
   

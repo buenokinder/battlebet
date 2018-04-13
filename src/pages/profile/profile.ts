@@ -4,7 +4,7 @@ import {AccountEditModalPage} from "../account-edit-modal/account-edit-modal";
 import {UserProvider} from "../../providers/user";
 import {IonicUtilProvider} from "../../providers/ionic-util";
 import {IParams} from "../../models/parse.params.model";
-
+import {UserDataProvider} from "../../providers/user-data";
 
 @Component({
     selector   : 'page-profile',
@@ -39,15 +39,16 @@ export class ProfilePage {
 
     constructor(private User: UserProvider,
                 private events: Events,
-                private navParams: NavParams,
+                private userData: UserDataProvider,
+                
                 private modalCtrl: ModalController,
                 private util: IonicUtilProvider,
     ) {
         
 
-        this.username        = this.navParams.get('username');
+        this.user            = this.userData.current();
+        this.username        = this.user.username;
         this.params.username = this.username;
-        this.eventName       = this.username;
         console.log('Open Profile', this.username);
 
         this.loading = true;

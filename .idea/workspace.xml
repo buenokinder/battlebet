@@ -2,24 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0466e70b-e846-4b52-b7af-70b6ebd7cfb2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/tab-account/tab-account.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/tab-account/tab-account.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/tab-account/tab-account.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/providers/friends.ts" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pages/friends/friends.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pages/games/contact.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pages/games/contact.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/pages/games/contact.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.component.ts" afterPath="$PROJECT_DIR$/src/app/app.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.module.ts" afterPath="$PROJECT_DIR$/src/app/app.module.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config.ts" afterPath="$PROJECT_DIR$/src/config.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/fonts/ionicons.scss" afterPath="$PROJECT_DIR$/www/assets/fonts/ionicons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/fonts/ionicons.svg" afterPath="$PROJECT_DIR$/www/assets/fonts/ionicons.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/fonts/noto-sans.scss" afterPath="$PROJECT_DIR$/www/assets/fonts/noto-sans.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/fonts/roboto.scss" afterPath="$PROJECT_DIR$/www/assets/fonts/roboto.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/assets/parse.min.js" afterPath="$PROJECT_DIR$/www/assets/parse.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/auth/auth.ts" afterPath="$PROJECT_DIR$/src/pages/auth/auth.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/games/games.html" afterPath="$PROJECT_DIR$/src/pages/games/games.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/profile/profile.ts" afterPath="$PROJECT_DIR$/src/pages/profile/profile.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/tab-account-settings/tab-account-settings.ts" afterPath="$PROJECT_DIR$/src/pages/tab-account-settings/tab-account-settings.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/tabs/tabs.html" afterPath="$PROJECT_DIR$/src/pages/tabs/tabs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/tabs/tabs.ts" afterPath="$PROJECT_DIR$/src/pages/tabs/tabs.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/build/main.css" afterPath="$PROJECT_DIR$/www/build/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/build/main.js" afterPath="$PROJECT_DIR$/www/build/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/build/main.js.map" afterPath="$PROJECT_DIR$/www/build/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/build/polyfills.js" afterPath="$PROJECT_DIR$/www/build/polyfills.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/build/sw-toolbox.js" afterPath="$PROJECT_DIR$/www/build/sw-toolbox.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/build/vendor.js" afterPath="$PROJECT_DIR$/www/build/vendor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/www/build/vendor.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="config.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/config.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="32" />
+            <state relative-caret-position="476">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -44,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1307">
-              <caret line="141" column="32" lean-forward="false" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="32" />
+              <caret line="145" column="32" lean-forward="false" selection-start-line="145" selection-start-column="25" selection-end-line="145" selection-end-column="32" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
                 <element signature="e#588#650#0" expanded="true" />
@@ -57,18 +64,24 @@
       <file leaf-file-name="games.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/games/games.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="306">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <marker date="1523625850048" expanded="true" signature="102:116" ph="..." />
+                <marker date="1523625850048" expanded="true" signature="145:559" ph="..." />
+                <marker date="1523625850048" expanded="true" signature="164:544" ph="..." />
+                <marker date="1523625850048" expanded="true" signature="212:530" ph="..." />
+                <marker date="1523625850048" expanded="true" signature="242:313" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="games.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="games.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/games/games.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="338">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -220,7 +233,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21806000" />
+    <option name="totallyTimeSpent" value="22066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -429,7 +442,7 @@
         <state relative-caret-position="510">
           <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -439,7 +452,31 @@
         <state relative-caret-position="850">
           <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
           <folding>
-            <element signature="e#0#48#0" expanded="true" />
+            <element signature="e#0#48#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/games/games.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <marker date="1523625850048" expanded="true" signature="102:116" ph="..." />
+            <marker date="1523625850048" expanded="true" signature="145:559" ph="..." />
+            <marker date="1523625850048" expanded="true" signature="164:544" ph="..." />
+            <marker date="1523625850048" expanded="true" signature="212:530" ph="..." />
+            <marker date="1523625850048" expanded="true" signature="242:313" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/games/games.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -447,7 +484,7 @@
     <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1307">
-          <caret line="141" column="32" lean-forward="false" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="32" />
+          <caret line="145" column="32" lean-forward="false" selection-start-line="145" selection-start-column="25" selection-end-line="145" selection-end-column="32" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
             <element signature="e#588#650#0" expanded="true" />
@@ -458,27 +495,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="32" />
+        <state relative-caret-position="476">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/games/games.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/games/games.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

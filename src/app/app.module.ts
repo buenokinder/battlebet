@@ -24,6 +24,7 @@ import { AuthPage } from '../pages/auth/auth';
 import {ProfilePage} from "../pages/profile/profile";
 import { GamesPage } from '../pages/games/games';
 import { FixturePage } from '../pages/fixture/fixture';
+import { TabAccountPage } from '../pages/tab-account/tab-account';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -53,7 +54,9 @@ export function createTranslateLoader(http: Http) {
     AccountEditModalPage,
     UserPasswordPage,
     LanguageModalComponent,
-    TabAccountSettingsPage
+    TabAccountSettingsPage,
+    TabAccountPage
+    
   ],
   imports: [
       HttpClientModule,
@@ -85,7 +88,8 @@ export function createTranslateLoader(http: Http) {
     AccountEditModalPage,
     UserPasswordPage,
     LanguageModalComponent,
-    TabAccountSettingsPage
+    TabAccountSettingsPage,
+    TabAccountPage
   ],
   providers: [
     StatusBar,
