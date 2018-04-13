@@ -2,7 +2,10 @@
 export const APP_NAME: string = 'battlebet';
 
 // Parse
+
+
 export const PARSE_APP_ID: string     = '8OUE80mlqO62r3cOyzGmFusrfQGBlAFKwUNFoziN';
+
 
 export const PARSE_JAVASCRIPT_ID: string     = '91UxV8Zzrlzcuh91YRBif96sVZSNg56R1uXwjAzh';
 

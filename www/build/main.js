@@ -42,7 +42,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Ionic!</h2>\n  <p>\n    This starter project comes with simple tabs-based layout for apps\n    that are going to primarily use a Tabbed UI.\n  </p>\n  <p>\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n    update any existing page or create new pages.\n  </p>\n\n  <ion-list>\n    <ion-item (click)="editModal()">{{\'Edit Profile\' | translate}}</ion-item>\n    <ion-item (click)="logout()">{{\'Logout\'|translate}}</ion-item>\n</ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <h2>Welcome to Ionic!</h2>\n\n  <p>\n\n    This starter project comes with simple tabs-based layout for apps\n\n    that are going to primarily use a Tabbed UI.\n\n  </p>\n\n  <p>\n\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n\n    update any existing page or create new pages.\n\n  </p>\n\n\n\n  <ion-list>\n\n    <ion-item (click)="editModal()">{{\'Edit Profile\' | translate}}</ion-item>\n\n    <ion-item (click)="logout()">{{\'Logout\'|translate}}</ion-item>\n\n</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_user__["a" /* UserProvider */],
@@ -311,11 +311,146 @@ var ParseFileProvider = (function () {
         }
         return new Parse.File('file.jpg', file).save();
     };
+<<<<<<< HEAD
+    AuthPage.prototype.onPageTabs = function () {
+        this.app.getRootNav().setRoot(__WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */]);
+    };
+    AuthPage.prototype.loginFacebook = function () {
+        // new LoginOptions;
+        var _this = this;
+        // this.fb.login()
+        // .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+        // .catch(e => console.log('Error logging into Facebook', e));
+        this.util.onLoading();
+        this.facebook.getLoginStatus().then(function (response) {
+            console.log('getLoginStatus', response);
+            if (response.status === 'connected') {
+                console.log(1);
+                _this.processFacebookLogin(response);
+            }
+            else {
+                console.log(2);
+                _this.facebook.login(['public_profile']).then(function (authData) {
+                    console.log('facebook login', authData);
+                    _this.processFacebookLogin(authData);
+                }).catch(function (error) {
+                    console.log(error);
+                    _this.util.endLoading();
+                    _this.util.toast(error.message);
+                });
+            }
+        }).catch(function (error) {
+            console.log(error);
+            _this.util.endLoading();
+            _this.util.toast(error.message);
+        });
+    };
+    AuthPage.prototype.processFacebookLogin = function (authData) {
+        var _this = this;
+        this.facebook.api('/me?fields=id,name,birthday,last_name,first_name,email,gender', ['public_profile'])
+            .then(function (fbData) {
+            console.log('fbData', fbData);
+            var facebookAuthData = {
+                id: authData['authResponse']['userID'],
+                access_token: authData['authResponse']['accessToken'],
+                expiration_date: (new Date().getTime() + 1000).toString()
+            };
+            _this.util.onLoading('Updating Facebook Profile');
+            Parse.FacebookUtils.logIn(facebookAuthData, {
+                success: function (user) {
+                    if (!user.existed()) {
+                        // New user
+                        console.warn('UserProvider signed up and logged in through Facebook!', user);
+                        _this.provider.facebookSyncProfile(fbData)
+                            .then(_this.provider.updateWithFacebookData())
+                            .then(function (result) {
+                            _this.util.endLoading();
+                            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__tab_account_settings_tab_account_settings__["a" /* TabAccountSettingsPage */]);
+                        });
+                    }
+                    else {
+                        // Old UserProvider
+                        console.info('UserProvider logged in through Facebook!', user);
+                        _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__tab_account_settings_tab_account_settings__["a" /* TabAccountSettingsPage */]);
+                        _this.provider.facebookSyncProfile(fbData)
+                            .then(_this.provider.updateWithFacebookData())
+                            .then(function (result) {
+                            _this.util.endLoading();
+                            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__tab_account_settings_tab_account_settings__["a" /* TabAccountSettingsPage */]);
+                        });
+                    }
+                },
+                error: function (user, error) {
+                    console.error('UserProvider cancelled the Facebook login or did not fully authorize.', user, error);
+                    _this.util.endLoading();
+                    _this.util.toast('UserProvider cancelled the Facebook login or did not fully authorize');
+                }
+            });
+        });
+    };
+    AuthPage.prototype.resetPassword = function () {
+        var _this = this;
+        this.alertCtrl.create({
+            title: this.alertTranslate.title,
+            message: this.alertTranslate.message,
+            inputs: [
+                {
+                    placeholder: this.alertTranslate.email,
+                    name: 'email',
+                    type: 'email'
+                }
+            ],
+            buttons: [
+                {
+                    text: this.alertTranslate.cancel,
+                    role: 'cancel'
+                },
+                {
+                    text: this.alertTranslate.submit,
+                    handler: function (data) {
+                        if (data.email) {
+                            _this.util.onLoading();
+                            _this.provider.recoverPassword(data.email).then(function (result) {
+                                console.log(result);
+                                setTimeout(function () {
+                                    _this.util.endLoading();
+                                    _this.util.toast(_this.alertTranslate.emailRecoverySend);
+                                }, 500);
+                                return false;
+                            }).catch(function (error) {
+                                _this.util.toast('Server error');
+                                _this.util.endLoading();
+                            });
+                        }
+                        else {
+                            _this.util.toast(_this.alertTranslate.emailRequired);
+                        }
+                    }
+                }
+            ]
+        }).present();
+    };
+    AuthPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-auth',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\auth\auth.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>{{appName}}</ion-title>\n\n    </ion-navbar>\n\n\n\n    <ion-toolbar color="primary">\n\n        <ion-segment [(ngModel)]="authType" color="white">\n\n            <ion-segment-button value="login" style="color: white!important;" >{{\'Login\' | translate}}</ion-segment-button>\n\n            <ion-segment-button value="signup" style="color: white!important;" >{{\'Signup\' | translate}}</ion-segment-button>\n\n        </ion-segment>\n\n    </ion-toolbar>\n\n\n\n</ion-header>\n\n<ion-content>\n\n\n\n    <div [ngSwitch]="authType">\n\n        <form *ngSwitchCase="\'login\'" [formGroup]="formLogin" #rFormLogin="ngForm" (ngSubmit)="login(rFormLogin)">\n\n            <ion-list>\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Username\' | translate}}</ion-label>\n\n                    <ion-input type="text" formControlName="username"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formLogin.controls.username.pristine && !formLogin.controls.username.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username?.errors?.minlength">\n\n                        {{\'Password must have more than 4 characters\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Password\'|translate}}</ion-label>\n\n                    <ion-input [type]="inputPasswordType" formControlName="password"></ion-input>\n\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n\n                    </a>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formLogin.controls.password.pristine && !formLogin.controls.password.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password?.errors?.minlength">\n\n                        {{\'Password must have more than 6 characters\' | translate}}\n\n                    </p>\n\n\n\n                </ion-item>\n\n            </ion-list>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <a ion-button block clear full (click)="resetPassword()">{{\'Forgot Password\'|translate}}</a>\n\n                </ion-col>\n\n                <ion-col>\n\n                    <button ion-button block full color="primary" type="submit">{{\'Log in\' | translate}}\n\n                    </button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </form>\n\n\n\n        <form *ngSwitchCase="\'signup\'" [formGroup]="formSignup" #rFormSignup="ngForm"\n\n              (ngSubmit)="createUser(rFormSignup)">\n\n            <ion-list>\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Name\'| translate}} *</ion-label>\n\n                    <ion-input type="text" formControlName="name"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.name.pristine && !formSignup.controls.name.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.name.pristine && formSignup.controls.name.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Email\' | translate}} *</ion-label>\n\n                    <ion-input #email type="email" formControlName="email"\n\n                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.email.pristine && !formSignup.controls.email.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.email.pristine && formSignup.controls.email.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <!--Username-->\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Username\' | translate}} *</ion-label>\n\n                    <ion-input #username type="text" formControlName="username"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.username.pristine && !formSignup.controls.username.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.username.pristine && formSignup.controls.username.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{ \'Password\' | translate }} *</ion-label>\n\n                    <ion-input #password [type]="inputPasswordType" formControlName="password"></ion-input>\n\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n\n                    </a>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.password.pristine && !formSignup.controls.password.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password?.errors?.minlength">\n\n                        {{\'Password must have more than 5 characters\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n\n\n                <ion-item>\n\n                    <ion-label floating>{{\'Confirm password\' | translate}} *</ion-label>\n\n                    <ion-input [type]="inputPasswordType" formControlName="passwordConfirmation"></ion-input>\n\n                </ion-item>\n\n                <ion-item class="form-error-list"\n\n                          *ngIf="!formSignup.controls.passwordConfirmation.pristine && !formSignup.controls.passwordConfirmation.valid">\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation.hasError(\'required\')">\n\n                        {{\'This is a required field.\' | translate}}\n\n                    </p>\n\n                    <p class="form-error" item-right\n\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation?.errors?.minlength">\n\n                        {{\'Password must have more than 5 characters\' | translate}}\n\n                    </p>\n\n                </ion-item>\n\n            </ion-list>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <button type="submit" full ion-button block color="primary">{{\'Sign up\' | translate}}</button>\n\n                </ion-col>\n\n            </ion-row>\n\n        </form>\n\n    </div>\n\n\n\n    <ion-row>\n\n        <ion-col><a ion-button block icon-left color="facebook" (click)="loginFacebook()">\n\n            <ion-icon name="logo-facebook"></ion-icon>\n\n            {{\'Signup with Facebook\' | translate }}</a>\n\n        </ion-col>\n\n    </ion-row>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\auth\auth.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_ionic_util__["a" /* IonicUtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_ng2_facebook_sdk__["a" /* FacebookService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_external_lib__["a" /* ExternalLibProvider */]])
+    ], AuthPage);
+    return AuthPage;
+=======
     ParseFileProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [])
     ], ParseFileProvider);
     return ParseFileProvider;
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
 }());
 
 //# sourceMappingURL=parse-file.js.map
@@ -377,11 +512,21 @@ var UserDataProvider = (function () {
     UserDataProvider.prototype.profile = function (username) {
         return Parse.Cloud.run('profile', { username: username });
     };
+<<<<<<< HEAD
+    AboutPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-about',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-toolbar color="primary">\n\n      <ion-title>\n\n          {{\'About\' | translate}}\n\n      </ion-title>\n\n      <ion-buttons start>\n\n          <button ion-button (click)="dismiss()">\n\n              <ion-icon name="close"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\about\about.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
+    ], AboutPage);
+    return AboutPage;
+=======
     UserDataProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [])
     ], UserDataProvider);
     return UserDataProvider;
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
 }());
 
 //# sourceMappingURL=user-data.js.map
@@ -429,7 +574,121 @@ webpackEmptyAsyncContext.id = 175;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonicUtilProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+<<<<<<< HEAD
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_password_user_password__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__account_edit_modal_account_edit_modal__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_ionic_util__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__about_about__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_language_modal_language_modal__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user__ = __webpack_require__(32);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+//import {ChatChannelProvider} from "../../providers/chat-channel";
+var TabAccountSettingsPage = (function () {
+    function TabAccountSettingsPage(User, app, modalCtrl, util) {
+        this.User = User;
+        this.app = app;
+        this.modalCtrl = modalCtrl;
+        this.util = util;
+    }
+    TabAccountSettingsPage.prototype.aboutPage = function () {
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__about_about__["a" /* AboutPage */]).present();
+    };
+    TabAccountSettingsPage.prototype.modalLanguage = function () {
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__components_language_modal_language_modal__["a" /* LanguageModalComponent */]).present();
+    };
+    TabAccountSettingsPage.prototype.href = function (url) {
+        this.util.href(url);
+    };
+    TabAccountSettingsPage.prototype.changePassword = function () {
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__user_password_user_password__["a" /* UserPasswordPage */]).present();
+    };
+    TabAccountSettingsPage.prototype.editModal = function () {
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__account_edit_modal_account_edit_modal__["a" /* AccountEditModalPage */]).present();
+    };
+    TabAccountSettingsPage.prototype.logout = function () {
+        this.User.logout();
+        this.User.cleanDBFollowing();
+        // this.Gallery.cleanCache()
+        // this.ChatChannel.cleanDB();
+        // this.app.getRootNav().setRoot(IntroPage);
+    };
+    TabAccountSettingsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-tab-account-settings',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\tab-account-settings\tab-account-settings.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>{{\'Options\'|translate}}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n    <ion-list>\n\n        <ion-item-divider>{{\'Invite Friends\' | translate}}</ion-item-divider>\n\n        <ion-item>\n\n            <ion-icon name="logo-facebook" icon-left></ion-icon>\n\n            {{\'Find Facebook Friends\' | translate }}\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-icon name="person" icon-left></ion-icon>\n\n            {{\'Find Contact\' | translate }}\n\n        </ion-item>\n\n        <ion-item-divider>{{\'Account\' | translate}}</ion-item-divider>\n\n        <ion-item (click)="editModal()">{{\'Edit Profile\' | translate}}</ion-item>\n\n        <ion-item (click)="changePassword()">{{\'Change Password\' | translate}}</ion-item>\n\n        <ion-item-divider>{{\'Settings\' | translate}}</ion-item-divider>\n\n        <ion-item (click)="modalLanguage()">{{\'Language\'|translate}}</ion-item>\n\n        <ion-item>{{\'Push Notifications\' | translate}}</ion-item>\n\n        <ion-item>{{\'Comments\' | translate}}</ion-item>\n\n        <ion-item>{{\'Upload Quality\' | translate}}</ion-item>\n\n        <ion-item>{{\'Save Original Photos\' | translate }}</ion-item>\n\n        <ion-item-divider>{{\'About\' | translate}}</ion-item-divider>\n\n        <ion-item (click)="href(\'https://photogram.codevibe.io/\')">{{\'Terms of Service\' | translate}}</ion-item>\n\n        <ion-item (click)="aboutPage()">{{\'Open Source Libraries\' | translate}}</ion-item>\n\n        <ion-item (click)="logout()">{{\'Logout\'|translate}}</ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\tab-account-settings\tab-account-settings.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__providers_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_ionic_util__["a" /* IonicUtilProvider */]])
+    ], TabAccountSettingsPage);
+    return TabAccountSettingsPage;
+}());
+
+//# sourceMappingURL=tab-account-settings.js.map
+
+/***/ }),
+
+/***/ 132:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 132;
+
+/***/ }),
+
+/***/ 173:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 173;
+
+/***/ }),
+
+/***/ 23:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IonicUtilProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_translate__ = __webpack_require__(59);
+=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_translate__ = __webpack_require__(60);
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_underscore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -604,7 +863,11 @@ var TabsPage = (function () {
     }
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+<<<<<<< HEAD
+            selector: 'tabs',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\tabs\tabs.html"*/'<ion-tabs tabsPlacement="bottom" color="primary" preloadTabs="true" #myTabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabTitle="Games" tabIcon="ios-football"></ion-tab>\n\n  <ion-tab [root]="tabAccount" tabIcon="flash"></ion-tab>\n\n  <ion-tab [root]="tabProfile" tabIcon="person"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\tabs\tabs.html"*/
+=======
             selector: 'tabs',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/pages/tabs/tabs.html"*/'<ion-tabs tabsPlacement="bottom" color="primary" preloadTabs="true" #myTabs>\n  <ion-tab [root]="tabAccount" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Games" tabIcon="ios-football"></ion-tab>\n  <ion-tab [root]="tabProfile" tabIcon="person"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/pages/tabs/tabs.html"*/
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Events */]])
     ], TabsPage);
@@ -657,7 +920,11 @@ var GamesPage = (function () {
     };
     GamesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+<<<<<<< HEAD
+            selector: 'page-games',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\games\games.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Games\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list inset>\n\n    <ion-item *ngFor="let fixture of fixtures">\n\n      <ion-avatar item-start>\n\n        <ion-icon name="ios-football" ></ion-icon>\n\n      </ion-avatar>\n\n      <h2>{{fixture.name}}</h2>\n\n      <ion-note item-end>{{fixture.startTime | date:"short"}}</ion-note>\n\n      <button ion-button color="secondary" block (click)="pushFixture(fixture.id)">Bet</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\games\games.html"*/
+=======
             selector: 'page-games',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/pages/games/games.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <ion-title>{{\'Games\'| translate}}</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list inset>\n    <ion-item *ngFor="let fixture of fixtures">\n      <ion-avatar item-start>\n        <ion-icon name="ios-football" ></ion-icon>\n      </ion-avatar>\n      <h2>{{fixture.name}}</h2>\n      <ion-note item-end>{{fixture.startTime | date:"short"}}</ion-note>\n      <button ion-button color="secondary" block (click)="pushFixture(fixture.id)">Bet</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/pages/games/games.html"*/
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */]])
     ], GamesPage);
@@ -711,7 +978,7 @@ var FixturePage = (function () {
     };
     FixturePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-fixture',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/pages/fixture/fixture.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{fixture}}\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list inset>\n    <ion-item *ngFor="let market of markets">\n      <ion-avatar item-start>\n        <ion-icon name="ios-football" ></ion-icon>\n      </ion-avatar>\n      <h2>{{market.name}}</h2>\n      <button ion-button color="secondary" block (click)="pushMarket(market.id)">Bet</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/pages/fixture/fixture.html"*/
+            selector: 'page-fixture',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\fixture\fixture.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{fixture}}\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list inset>\n\n    <ion-item *ngFor="let market of markets">\n\n      <ion-avatar item-start>\n\n        <ion-icon name="ios-football" ></ion-icon>\n\n      </ion-avatar>\n\n      <h2>{{market.name}}</h2>\n\n      <button ion-button color="secondary" block (click)="pushMarket(market.id)">Bet</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\fixture\fixture.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], FixturePage);
@@ -766,7 +1033,7 @@ var MarketPage = (function () {
     };
     MarketPage = MarketPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-market',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/pages/market/market.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Bet\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n      <ion-list>\n        <button (click)="selectOdd(selection.odd)" *ngFor="let selection of selections" ion-button>{{selection.name}}<br>{{selection.odd}}</button>\n      </ion-list>\n\n    <ion-list>\n\n        <ion-item>\n            <ion-label fixed>Odd</ion-label>\n            <ion-input *ngIf="selectedodd" disabled="true" placeholder="{{selectedodd}}"></ion-input>\n        </ion-item>\n\n        <ion-item>\n        <ion-label fixed>Value</ion-label>\n        <ion-input type="text"></ion-input>\n    </ion-item>\n\n\n    </ion-list>\n\n    <div padding>\n        <button ion-button color="primary" block>Bet</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/pages/market/market.html"*/
+            selector: 'page-market',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\market\market.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Bet\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n      <ion-list>\n\n        <button (click)="selectOdd(selection.odd)" *ngFor="let selection of selections" ion-button>{{selection.name}}<br>{{selection.odd}}</button>\n\n      </ion-list>\n\n\n\n    <ion-list>\n\n\n\n        <ion-item>\n\n            <ion-label fixed>Odd</ion-label>\n\n            <ion-input *ngIf="selectedodd" disabled="true" placeholder="{{selectedodd}}"></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n        <ion-label fixed>Value</ion-label>\n\n        <ion-input type="text"></ion-input>\n\n    </ion-item>\n\n\n\n\n\n    </ion-list>\n\n\n\n    <div padding>\n\n        <button ion-button color="primary" block>Bet</button>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\market\market.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], MarketPage);
@@ -778,6 +1045,182 @@ var MarketPage = (function () {
 
 /***/ }),
 
+<<<<<<< HEAD
+/***/ 241:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_edit_modal_account_edit_modal__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_ionic_util__ = __webpack_require__(23);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ProfilePage = (function () {
+    function ProfilePage(User, events, navParams, modalCtrl, util) {
+        var _this = this;
+        this.User = User;
+        this.events = events;
+        this.navParams = navParams;
+        this.modalCtrl = modalCtrl;
+        this.util = util;
+        this.loading = true;
+        this.type = 'list';
+        this.moreItem = true;
+        this.profile = {
+            id: '',
+            name: '',
+            username: '',
+            photo: null,
+            status: '',
+            galleriesTotal: 0,
+            followersTotal: 0,
+            followingsTotal: 0,
+        };
+        this.params = {
+            limit: 12,
+            page: 1,
+            privacity: 'public',
+            username: null
+        };
+        this.username = this.navParams.get('username');
+        this.params.username = this.username;
+        this.eventName = this.username;
+        console.log('Open Profile', this.username);
+        this.loading = true;
+        this.User.getProfileCache(this.username).then(function (profile) {
+            if (profile) {
+                _this.profile = profile;
+                _this.profile.loading = false;
+            }
+            else {
+                _this.loadProfile();
+            }
+            _this.onSelectType();
+        });
+    }
+    ProfilePage.prototype.ionViewWillEnter = function () {
+    };
+    ProfilePage.prototype.loadProfile = function () {
+        var _this = this;
+        this.User.getProfile(this.username).then(function (profile) {
+            _this.profile = profile;
+            _this.profile.loading = false;
+            _this.loading = false;
+        }).catch(this.util.toast);
+    };
+    ProfilePage.prototype.onEditProfile = function () {
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__account_edit_modal_account_edit_modal__["a" /* AccountEditModalPage */]).present();
+    };
+    ProfilePage.prototype.onSelectType = function (type) {
+        var _this = this;
+        if (type === void 0) { type = 'list'; }
+        this.type = type;
+        setTimeout(function () { return _this.events.publish(_this.eventName + ':reload', _this.params); }, 500);
+    };
+    ProfilePage.prototype.follow = function (user) {
+        console.log('user', user);
+        user.loading = true;
+        this.User.follow({ userId: user.id }).then(function (resp) {
+            console.log('Follow result', resp);
+            user.isFollow = (resp === 'follow') ? true : false;
+            if (resp == 'follow') {
+                user.followersTotal += 1;
+            }
+            if (resp == 'unfollow') {
+                user.followersTotal -= 1;
+            }
+            user.loading = false;
+        });
+    };
+    ProfilePage.prototype.doInfinite = function (event) {
+        this.params.page++;
+        this.events.unsubscribe(this.eventName + ':complete');
+        this.events.subscribe(this.eventName + ':complete', function () { return event.complete(); });
+        this.sendParams();
+    };
+    ProfilePage.prototype.doRefresh = function (event) {
+        if (event) {
+            event.complete();
+        }
+        this.params.page = 1;
+        this.events.publish(this.eventName + ':reload', this.params);
+    };
+    ProfilePage.prototype.sendParams = function () {
+        console.log('sendParams', this.params);
+        this.events.publish(this.eventName + ':params', this.params);
+    };
+    ProfilePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-profile',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\profile\profile.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>{{\'Profile\'| translate}}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n\n\n    <div class="profile-top">\n\n        <ion-row>\n\n            <ion-col width-25>\n\n                <div class="img-avatar">\n\n                    <img *ngIf="profile.photo" [src]="profile.photo._url"/>\n\n                    <img *ngIf="!profile.photo" src="assets/img/user.png"/>\n\n                </div>\n\n            </ion-col>\n\n            <ion-col width-75>\n\n                <ion-row>\n\n                    <ion-col class="text-center">\n\n                        <ion-spinner *ngIf="loading"></ion-spinner>\n\n                        <b *ngIf="!loading">{{ profile.galleriesTotal || 0}}</b>\n\n                        <p>{{\'posts\' | translate }}</p>\n\n                    </ion-col>\n\n                    <ion-col class="text-center">\n\n                        <ion-spinner *ngIf="loading"></ion-spinner>\n\n                        <b *ngIf="!loading">{{ profile.followersTotal || 0}}</b>\n\n                        <p>{{\'followers\' | translate}}</p>\n\n                    </ion-col>\n\n                    <ion-col class="text-center">\n\n                        <ion-spinner *ngIf="loading"></ion-spinner>\n\n                        <b *ngIf="!loading">{{ profile.followingsTotal || 0}}</b>\n\n                        <p>{{\'following\' | translate }}</p>\n\n                    </ion-col>\n\n                </ion-row>\n\n                <ion-row>\n\n                    <ion-col>\n\n                        <div *ngIf="loading" class="text-center">\n\n                            <ion-spinner></ion-spinner>\n\n                        </div>\n\n                        <div *ngIf="!loading" (click)="follow(profile)">\n\n                            <button *ngIf="profile.isFollow" ion-button block color="primary" small>\n\n                                {{ \'Unfollow\' | translate }}\n\n                            </button>\n\n                            <button *ngIf="!profile.isFollow" outline ion-button block color="primary" small>\n\n                                {{ \'Follow\' | translate }}\n\n                            </button>\n\n                        </div>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </ion-col>\n\n        </ion-row>\n\n    </div>\n\n    <div class="profile-desc">\n\n        <ion-row>\n\n            <ion-col>\n\n                <h3>{{ profile.name }}</h3>\n\n                <p>{{ profile.status }}</p>\n\n            </ion-col>\n\n        </ion-row>\n\n    </div>\n\n\n\n    <ion-segment [(ngModel)]="type" color="primary">\n\n        <ion-segment-button (ionSelect)="onSelectType(\'list\')" value="list">\n\n            <ion-icon name="ios-list-outline"></ion-icon>\n\n        </ion-segment-button>\n\n        <ion-segment-button (ionSelect)="onSelectType(\'grid\')" value="grid">\n\n            <ion-icon name="ios-apps-outline"></ion-icon>\n\n        </ion-segment-button>\n\n        <ion-segment-button (ionSelect)="onSelectType(\'album\')" value="album">\n\n            <ion-icon name="ios-image-outline"></ion-icon>\n\n        </ion-segment-button>\n\n    </ion-segment>\n\n\n\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n\n        <ion-refresher-content></ion-refresher-content>\n\n    </ion-refresher>\n\n\n\n    <!-- <div *ngIf="eventName">\n\n        <photo-list [event]="eventName" *ngIf="type==\'list\'"></photo-list>\n\n        <photo-grid [event]="eventName" *ngIf="type==\'grid\'"></photo-grid>\n\n        <album-grid [event]="eventName" *ngIf="type==\'album\'"></album-grid>\n\n    </div> -->\n\n\n\n    <ion-infinite-scroll *ngIf="moreItem" (ionInfinite)="doInfinite($event)">\n\n        <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n    </ion-infinite-scroll>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\profile\profile.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_ionic_util__["a" /* IonicUtilProvider */]])
+    ], ProfilePage);
+    return ProfilePage;
+}());
+
+//# sourceMappingURL=profile.js.map
+
+/***/ }),
+
+/***/ 242:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ParseFileProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ParseFileProvider = (function () {
+    function ParseFileProvider() {
+        this._filename = 'file.jpg';
+    }
+    ParseFileProvider.prototype.upload = function (file, ext) {
+        this._file = file;
+        if (ext) {
+            this._filename.replace('.jpg', ext);
+        }
+        return new Parse.File('file.jpg', file).save();
+    };
+    ParseFileProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], ParseFileProvider);
+    return ParseFileProvider;
+}());
+
+//# sourceMappingURL=parse-file.js.map
+
+/***/ }),
+
+=======
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
 /***/ 243:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -828,7 +1271,7 @@ var UserPasswordPage = (function () {
     };
     UserPasswordPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-user-password',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/pages/user-password/user-password.html"*/'<ion-header>\n  <ion-toolbar color="primary">\n    <ion-title>Change Password</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n\n  <form #rForm="ngForm" (ngSubmit)="save(rForm)" novalidate>\n    <ion-list>\n      <ion-item>\n        <ion-icon name="lock" item-left></ion-icon>\n        <ion-input [(ngModel)]="form.password" name="password" type="text" #password="ngModel" placeholder="Current Password" required></ion-input>\n      </ion-item>\n      <p [hidden]="password.valid || !submitted" color="danger" padding-left>\n        Password is required\n      </p>\n\n      <ion-item>\n        <ion-icon name="lock" item-left></ion-icon>\n        <ion-input [(ngModel)]="form.changepassword" name="changepassword" type="text" #changepassword="ngModel" placeholder="New Password" required></ion-input>\n      </ion-item>\n      <p [hidden]="changepassword.valid || !submitted" color="danger" padding-left>\n        Change Password is required\n      </p>\n\n      <ion-item>\n        <ion-icon name="lock" item-left></ion-icon>\n        <ion-input [(ngModel)]="form.confirmpassword" name="confirmpassword" type="text" #confirmpassword="ngModel" placeholder="New Password again" required></ion-input>\n      </ion-item>\n      <p [hidden]="confirmpassword.valid || !submitted" color="danger" padding-left>\n        Confirm Password is required\n      </p>\n\n      <p [hidden]="confirmpassword.valid && form.changepassword != confirmpassword.valid || !submitted" color="danger" padding-left>\n        Confirm passwor not equal\n      </p>\n\n    </ion-list>\n\n    <div padding>\n      <button ion-button block>Save</button>\n    </div>\n  </form>\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/pages/user-password/user-password.html"*/
+            selector: 'page-user-password',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\user-password\user-password.html"*/'<ion-header>\n\n  <ion-toolbar color="primary">\n\n    <ion-title>Change Password</ion-title>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="dismiss()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n  <form #rForm="ngForm" (ngSubmit)="save(rForm)" novalidate>\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-icon name="lock" item-left></ion-icon>\n\n        <ion-input [(ngModel)]="form.password" name="password" type="text" #password="ngModel" placeholder="Current Password" required></ion-input>\n\n      </ion-item>\n\n      <p [hidden]="password.valid || !submitted" color="danger" padding-left>\n\n        Password is required\n\n      </p>\n\n\n\n      <ion-item>\n\n        <ion-icon name="lock" item-left></ion-icon>\n\n        <ion-input [(ngModel)]="form.changepassword" name="changepassword" type="text" #changepassword="ngModel" placeholder="New Password" required></ion-input>\n\n      </ion-item>\n\n      <p [hidden]="changepassword.valid || !submitted" color="danger" padding-left>\n\n        Change Password is required\n\n      </p>\n\n\n\n      <ion-item>\n\n        <ion-icon name="lock" item-left></ion-icon>\n\n        <ion-input [(ngModel)]="form.confirmpassword" name="confirmpassword" type="text" #confirmpassword="ngModel" placeholder="New Password again" required></ion-input>\n\n      </ion-item>\n\n      <p [hidden]="confirmpassword.valid || !submitted" color="danger" padding-left>\n\n        Confirm Password is required\n\n      </p>\n\n\n\n      <p [hidden]="confirmpassword.valid && form.changepassword != confirmpassword.valid || !submitted" color="danger" padding-left>\n\n        Confirm passwor not equal\n\n      </p>\n\n\n\n    </ion-list>\n\n\n\n    <div padding>\n\n      <button ion-button block>Save</button>\n\n    </div>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\user-password\user-password.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_ionic_util__["a" /* IonicUtilProvider */],
@@ -1000,7 +1443,7 @@ var LanguageModalComponent = (function () {
     };
     LanguageModalComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'language-modal',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/components/language-modal/language-modal.html"*/'<ion-header>\n    <ion-toolbar color="primary">\n        <ion-searchbar [(ngModel)]="_words" (ionInput)="doSearch()" (ionCancel)="doCancel()" [placeholder]="_placeholder">\n        </ion-searchbar>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-list>\n        <ion-item *ngFor="let item of _languages" (click)="selectLanguage(item)">\n            {{item.name}}\n        </ion-item>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/components/language-modal/language-modal.html"*/
+            selector: 'language-modal',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\components\language-modal\language-modal.html"*/'<ion-header>\n\n    <ion-toolbar color="primary">\n\n        <ion-searchbar [(ngModel)]="_words" (ionInput)="doSearch()" (ionCancel)="doCancel()" [placeholder]="_placeholder">\n\n        </ion-searchbar>\n\n        <ion-buttons start>\n\n            <button ion-button (click)="dismiss()">\n\n                <ion-icon name="close"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-list>\n\n        <ion-item *ngFor="let item of _languages" (click)="selectLanguage(item)">\n\n            {{item.name}}\n\n        </ion-item>\n\n    </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\components\language-modal\language-modal.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_ionic_util__["a" /* IonicUtilProvider */],
@@ -1425,7 +1868,80 @@ var AppModule = (function () {
 
 /***/ }),
 
+<<<<<<< HEAD
+/***/ 306:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_auth_auth__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_parse_push__ = __webpack_require__(115);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var MyApp = (function () {
+    function MyApp(platform, push, statusBar, splashScreen) {
+        var _this = this;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
+        platform.ready().then(function () {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            statusBar.styleDefault();
+            splashScreen.hide();
+            // Start Parse User
+            var user = Parse.User.current();
+            console.log(user);
+            if (!user) {
+                _this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_auth_auth__["a" /* AuthPage */];
+            }
+            else {
+                push.init();
+                _this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
+            }
+        });
+    }
+    ;
+    MyApp.prototype.ngOnInit = function () {
+        Parse.initialize(__WEBPACK_IMPORTED_MODULE_6__config__["c" /* PARSE_APP_ID */]);
+        Parse.serverURL = __WEBPACK_IMPORTED_MODULE_6__config__["d" /* PARSE_SERVER_URL */];
+    };
+    ;
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\app\app.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_7__providers_parse_push__["a" /* ParsePushProvider */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    ], MyApp);
+    return MyApp;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 32:
+=======
 /***/ 29:
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1759,9 +2275,23 @@ var MyApp = (function () {
         //Parse.JavaScriptKey = PARSE_JAVASCRIPT_ID;
         Parse.serverURL = __WEBPACK_IMPORTED_MODULE_6__config__["e" /* PARSE_SERVER_URL */];
     };
+<<<<<<< HEAD
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('inputFile'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], ImageCaptureComponent.prototype, "input", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+    ], ImageCaptureComponent.prototype, "imageChange", void 0);
+    ImageCaptureComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'image-capture',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\components\image-capture\image-capture.html"*/'<input *ngIf="!cordova"\n\n       #inputFile\n\n       type="file"\n\n       (change)="onChange($event)"\n\n       accept="image/x-png, image/gif, image/jpeg"\n\n       max-size="2048"\n\n       style="display: none;">\n\n<ng-content></ng-content>'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\components\image-capture\image-capture.html"*/
+=======
     ;
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/app/app.html"*/
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_7__providers_parse_push__["a" /* ParsePushProvider */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1980,7 +2510,7 @@ var IonPhotoCropModal = (function () {
     };
     IonPhotoCropModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'ion-photo-crop-modal',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/components/ion-photo/ion-photo-crop-modal/ion-photo-crop-modal.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                {{\'Cancel\' | translate}}\n            </button>\n        </ion-buttons>\n        <ion-title>{{\'Crop Image\' | translate}}</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <img [src]="img" id="image"/>\n\n    <!--Rotate-->\n    <ion-fab left bottom>\n        <button color="dark" ion-fab mini (click)="rotate(-90)">\n            <ion-icon class="invert" name="refresh"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <!-- Crop-->\n    <ion-fab center bottom>\n        <button color="primary" ion-fab (click)="crop()">\n            <ion-icon name="crop"></ion-icon>\n        </button>\n    </ion-fab>\n\n    <!-- Rotate-->\n    <ion-fab right bottom>\n        <button color="dark" ion-fab mini (click)="rotate(90)">\n            <ion-icon name="refresh"></ion-icon>\n        </button>\n    </ion-fab>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/components/ion-photo/ion-photo-crop-modal/ion-photo-crop-modal.html"*/
+            selector: 'ion-photo-crop-modal',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\components\ion-photo\ion-photo-crop-modal\ion-photo-crop-modal.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-buttons start>\n\n            <button ion-button (click)="dismiss()">\n\n                {{\'Cancel\' | translate}}\n\n            </button>\n\n        </ion-buttons>\n\n        <ion-title>{{\'Crop Image\' | translate}}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <img [src]="img" id="image"/>\n\n\n\n    <!--Rotate-->\n\n    <ion-fab left bottom>\n\n        <button color="dark" ion-fab mini (click)="rotate(-90)">\n\n            <ion-icon class="invert" name="refresh"></ion-icon>\n\n        </button>\n\n    </ion-fab>\n\n\n\n    <!-- Crop-->\n\n    <ion-fab center bottom>\n\n        <button color="primary" ion-fab (click)="crop()">\n\n            <ion-icon name="crop"></ion-icon>\n\n        </button>\n\n    </ion-fab>\n\n\n\n    <!-- Rotate-->\n\n    <ion-fab right bottom>\n\n        <button color="dark" ion-fab mini (click)="rotate(90)">\n\n            <ion-icon name="refresh"></ion-icon>\n\n        </button>\n\n    </ion-fab>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\components\ion-photo\ion-photo-crop-modal\ion-photo-crop-modal.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */],
@@ -2843,7 +3373,11 @@ var AuthPage = (function () {
     };
     AuthPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+<<<<<<< HEAD
+            selector: 'page-contact',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\contact\contact.html"*/
+=======
             selector: 'page-auth',template:/*ion-inline-start:"/Users/carlos/sources/battlebet/src/pages/auth/auth.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <ion-title>{{appName}}</ion-title>\n    </ion-navbar>\n\n    <ion-toolbar color="primary">\n        <ion-segment [(ngModel)]="authType" color="white">\n            <ion-segment-button value="login" style="color: white!important;" >{{\'Login\' | translate}}</ion-segment-button>\n            <ion-segment-button value="signup" style="color: white!important;" >{{\'Signup\' | translate}}</ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n\n</ion-header>\n<ion-content>\n\n    <div [ngSwitch]="authType">\n        <form *ngSwitchCase="\'login\'" [formGroup]="formLogin" #rFormLogin="ngForm" (ngSubmit)="login(rFormLogin)">\n            <ion-list>\n                <ion-item>\n                    <ion-label floating>{{\'Username\' | translate}}</ion-label>\n                    <ion-input type="text" formControlName="username"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formLogin.controls.username.pristine && !formLogin.controls.username.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.username.pristine && formLogin.controls.username?.errors?.minlength">\n                        {{\'Password must have more than 4 characters\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{\'Password\'|translate}}</ion-label>\n                    <ion-input [type]="inputPasswordType" formControlName="password"></ion-input>\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n                    </a>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formLogin.controls.password.pristine && !formLogin.controls.password.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formLogin.controls.password.pristine && formLogin.controls.password?.errors?.minlength">\n                        {{\'Password must have more than 6 characters\' | translate}}\n                    </p>\n\n                </ion-item>\n            </ion-list>\n            <ion-row>\n                <ion-col>\n                    <a ion-button block clear full (click)="resetPassword()">{{\'Forgot Password\'|translate}}</a>\n                </ion-col>\n                <ion-col>\n                    <button ion-button block full color="primary" type="submit">{{\'Log in\' | translate}}\n                    </button>\n                </ion-col>\n            </ion-row>\n        </form>\n\n        <form *ngSwitchCase="\'signup\'" [formGroup]="formSignup" #rFormSignup="ngForm"\n              (ngSubmit)="createUser(rFormSignup)">\n            <ion-list>\n                <ion-item>\n                    <ion-label floating>{{\'Name\'| translate}} *</ion-label>\n                    <ion-input type="text" formControlName="name"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.name.pristine && !formSignup.controls.name.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.name.pristine && formSignup.controls.name.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{\'Email\' | translate}} *</ion-label>\n                    <ion-input #email type="email" formControlName="email"\n                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.email.pristine && !formSignup.controls.email.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.email.pristine && formSignup.controls.email.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                </ion-item>\n\n                <!--Username-->\n                <ion-item>\n                    <ion-label floating>{{\'Username\' | translate}} *</ion-label>\n                    <ion-input #username type="text" formControlName="username"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.username.pristine && !formSignup.controls.username.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.username.pristine && formSignup.controls.username.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{ \'Password\' | translate }} *</ion-label>\n                    <ion-input #password [type]="inputPasswordType" formControlName="password"></ion-input>\n                    <a ion-button clear (click)="toggleInputPassword()" item-right>\n                        <ion-icon [name]="inputPasswordIcon"  ></ion-icon>\n                    </a>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.password.pristine && !formSignup.controls.password.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.password.pristine && formSignup.controls.password?.errors?.minlength">\n                        {{\'Password must have more than 5 characters\' | translate}}\n                    </p>\n                </ion-item>\n\n                <ion-item>\n                    <ion-label floating>{{\'Confirm password\' | translate}} *</ion-label>\n                    <ion-input [type]="inputPasswordType" formControlName="passwordConfirmation"></ion-input>\n                </ion-item>\n                <ion-item class="form-error-list"\n                          *ngIf="!formSignup.controls.passwordConfirmation.pristine && !formSignup.controls.passwordConfirmation.valid">\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation.hasError(\'required\')">\n                        {{\'This is a required field.\' | translate}}\n                    </p>\n                    <p class="form-error" item-right\n                       *ngIf="!formSignup.controls.passwordConfirmation.pristine && formSignup.controls.passwordConfirmation?.errors?.minlength">\n                        {{\'Password must have more than 5 characters\' | translate}}\n                    </p>\n                </ion-item>\n            </ion-list>\n            <ion-row>\n                <ion-col>\n                    <button type="submit" full ion-button block color="primary">{{\'Sign up\' | translate}}</button>\n                </ion-col>\n            </ion-row>\n        </form>\n    </div>\n\n    <ion-row>\n        <ion-col><a ion-button block icon-left color="facebook" (click)="loginFacebook()">\n            <ion-icon name="logo-facebook"></ion-icon>\n            {{\'Signup with Facebook\' | translate }}</a>\n        </ion-col>\n    </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"/Users/carlos/sources/battlebet/src/pages/auth/auth.html"*/
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_6__providers_user__["a" /* UserProvider */],
@@ -2857,7 +3391,99 @@ var AuthPage = (function () {
     return AuthPage;
 }());
 
+<<<<<<< HEAD
+//# sourceMappingURL=contact.js.map
+
+/***/ }),
+
+/***/ 46:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_NAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PARSE_APP_ID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PARSE_SERVER_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GOOGLE_MAPS_WEB; });
+/* unused harmony export GOOGLE_ANALYTICS */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return facebook_appId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return facebook_appVersion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return languages; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return language_default; });
+// AppName
+var APP_NAME = 'battlebet';
+// Parse
+var PARSE_APP_ID = 'c7758f4e-0b09-4a6b-a21a-58b28b74b4b9';
+var PARSE_SERVER_URL = 'http://localhost:1337/parse/';
+// Google Maps
+var GOOGLE_MAPS_WEB = 'AIzaSyCsexTjGbyCsGzyARWgU3vH9-09BEl3SQo';
+// Google Analytics
+var GOOGLE_ANALYTICS = '';
+// Facebook
+var facebook_appId = '1429423624023316';
+var facebook_appVersion = 'v2.8';
+// Languages
+var languages = [
+    {
+        name: 'English',
+        code: 'en',
+        flag: 'en'
+    },
+    {
+        name: 'Portugues',
+        code: 'pt',
+        flag: 'pt'
+    },
+    {
+        name: 'German',
+        code: 'de',
+        flag: 'de'
+    },
+    {
+        name: 'French',
+        code: 'fr',
+        flag: 'fr'
+    },
+    {
+        name: 'Greek',
+        code: 'el',
+        flag: 'el'
+    },
+    {
+        name: 'Spanish',
+        code: 'es',
+        flag: 'es'
+    },
+    {
+        name: 'Japanese',
+        code: 'ja',
+        flag: 'ja'
+    },
+    {
+        name: 'Chinese',
+        code: 'zh',
+        flag: 'zh'
+    },
+    {
+        name: 'Russian',
+        code: 'ru',
+        flag: 'ru'
+    },
+    {
+        name: 'Bengali (Bangla)',
+        code: 'bn',
+        flag: 'bn'
+    },
+    {
+        name: 'Turkish',
+        code: 'tr',
+        flag: 'tr'
+    },
+];
+var language_default = 'pt';
+//# sourceMappingURL=config.js.map
+=======
 //# sourceMappingURL=auth.js.map
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
 
 /***/ }),
 
@@ -2930,6 +3556,145 @@ var OddsProvider = (function () {
 
 //# sourceMappingURL=odds.js.map
 
+<<<<<<< HEAD
+/***/ }),
+
+/***/ 63:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountEditModalPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_ionic_util__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_parse_file__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_underscore__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_underscore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_image_capture_image_capture__ = __webpack_require__(350);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var AccountEditModalPage = (function () {
+    function AccountEditModalPage(viewCtrl, ionic, User, events, util, ParseFile, formBuilder) {
+        var _this = this;
+        this.viewCtrl = viewCtrl;
+        this.ionic = ionic;
+        this.User = User;
+        this.events = events;
+        this.util = util;
+        this.ParseFile = ParseFile;
+        this.formBuilder = formBuilder;
+        this._eventName = 'photoprofile';
+        this._user = User.current().attributes;
+        if (this._user.photo) {
+            this.photo = this._user.photo._url;
+        }
+        // Change Photo user
+        events.subscribe(this._eventName, function (imageCroped) {
+            _this.util.onLoading();
+            _this.ParseFile.upload({ base64: imageCroped[0] }).then(function (image) {
+                _this.User.updatePhoto(image).then(function (user) {
+                    console.log(user);
+                    _this.photo = imageCroped[0];
+                    _this.util.endLoading();
+                });
+            });
+            _this.events.publish('photocrop:close');
+        });
+    }
+    AccountEditModalPage.prototype.ionViewWillLoad = function () {
+        var _this = this;
+        // Validate user registration form
+        this.form = this.formBuilder.group({
+            name: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            email: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            username: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            status: ['', __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* Validators */].required],
+            website: [''],
+            gender: [''],
+            birthday: [''],
+            phone: [''],
+        });
+        __WEBPACK_IMPORTED_MODULE_6_underscore__["each"](this._user, function (value, key) {
+            if (_this.form.controls[key]) {
+                _this.form.controls[key].setValue(value);
+            }
+        });
+    };
+    AccountEditModalPage.prototype.changePhoto = function (photo) {
+        var _this = this;
+        this.util.onLoading('Uploading image...');
+        this.ParseFile.upload({ base64: photo }).then(function (image) {
+            _this.User.updatePhoto(image).then(function (user) {
+                _this._user = user;
+                _this.photo = photo;
+                _this.util.endLoading();
+                _this.util.toast('Avatar updated');
+            }).catch(function (error) {
+                _this.util.toast('Error: Not upload image');
+            });
+        });
+    };
+    AccountEditModalPage.prototype.openCapture = function () {
+        this.imageElement.openCapture();
+    };
+    AccountEditModalPage.prototype.submitProfile = function (rForm) {
+        var _this = this;
+        if (rForm.valid) {
+            this.ionic.onLoading();
+            this.User.update(this.form.value).then(function (result) {
+                console.log(result);
+                _this.ionic.endLoading();
+                _this.dismiss();
+            }).catch(function (error) {
+                console.log(error);
+                _this.dismiss();
+                _this.ionic.endLoading();
+            });
+        }
+    };
+    AccountEditModalPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('image'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_7__components_image_capture_image_capture__["a" /* ImageCaptureComponent */])
+    ], AccountEditModalPage.prototype, "imageElement", void 0);
+    AccountEditModalPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-account-edit-modal',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\account-edit-modal\account-edit-modal.html"*/'<ion-header>\n\n    <ion-toolbar color="primary">\n\n        <ion-title>\n\n            {{\'Profile\' | translate}}\n\n        </ion-title>\n\n        <ion-buttons start>\n\n            <button ion-button (click)="dismiss()">\n\n                <ion-icon name="close"></ion-icon>\n\n            </button>\n\n        </ion-buttons>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <form [formGroup]="form" #rForm="ngForm" (ngSubmit)="submitProfile(rForm)">\n\n        <div class="item-avatar" (click)="openCapture()">\n\n            <!-- <image-capture #image (imageChange)="changePhoto($event)">\n\n                <ion-avatar>\n\n                    <img *ngIf="photo" [src]="photo">\n\n                    <img *ngIf="!photo" src="assets/img/user.png">\n\n                </ion-avatar>\n\n            </image-capture> -->\n\n            <p>{{\'Change Profile Photo\' | translate}}</p>\n\n        </div>\n\n        <ion-list>\n\n            <ion-item>\n\n                <ion-icon name="calendar" item-left></ion-icon>\n\n                <ion-input formControlName="name" type="text" placeholder="{{\'Name\' | translate}}"></ion-input>\n\n            </ion-item>\n\n            <ion-item class="form-error-list"\n\n                      *ngIf="!form.controls.name.pristine && !form.controls.name.valid">\n\n                <p class="form-error" item-right\n\n                   *ngIf="!form.controls.name.pristine && form.controls.name.hasError(\'required\')">\n\n                    {{\'This is a required field.\' | translate}}\n\n                </p>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-icon name="person" item-left></ion-icon>\n\n                <ion-input formControlName="username" type="text" placeholder="{{\'Username\' | translate}}"></ion-input>\n\n            </ion-item>\n\n            <ion-item class="form-error-list"\n\n                      *ngIf="!form.controls.username.pristine && !form.controls.username.valid">\n\n                <p class="form-error" item-right\n\n                   *ngIf="!form.controls.username.pristine && form.controls.username.hasError(\'required\')">\n\n                    {{\'This is a required field.\' | translate}}\n\n                </p>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-icon name="compass" item-left></ion-icon>\n\n                <ion-input formControlName="website" type="text" placeholder="{{\'Website\' | translate}}"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-icon name="quote" item-left></ion-icon>\n\n                <ion-input formControlName="status" type="text" placeholder="{{\'Status\' | translate}}"></ion-input>\n\n            </ion-item>\n\n            <ion-item-divider>\n\n                {{\'PRIVATE INFORMATION\' | translate}}\n\n            </ion-item-divider>\n\n            <ion-item>\n\n                <ion-icon name="mail" item-left></ion-icon>\n\n                <ion-input formControlName="email" type="text" placeholder="{{\'Email\' | translate}}"></ion-input>\n\n            </ion-item>\n\n            <ion-item class="form-error-list"\n\n                      *ngIf="!form.controls.email.pristine && !form.controls.email.valid">\n\n                <p class="form-error" item-right\n\n                   *ngIf="!form.controls.email.pristine && form.controls.email.hasError(\'required\')">\n\n                    {{\'This is a required field.\' | translate}}\n\n                </p>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-icon name="calendar" item-left></ion-icon>\n\n                <ion-datetime formcontrolname="birthday"\n\n                              displayFormat="MM/DD/YYYY"\n\n                              placeholder="MM/DD/YYYY"></ion-datetime>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-icon name="phone-portrait" item-left></ion-icon>\n\n                <ion-input formControlName="phone" type="text" placeholder="{{\'Phone\' | translate}}"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-icon name="phone-portrait" item-left></ion-icon>\n\n                <ion-select formControlName="gender">\n\n                    <ion-option value="">{{\'Not\' | translate}}\'</ion-option>\n\n                    <ion-option value="male">{{\'Male\' | translate}}</ion-option>\n\n                    <ion-option value="female">{{\'Female\' | translate }}</ion-option>\n\n                </ion-select>\n\n            </ion-item>\n\n        </ion-list>\n\n\n\n        <div padding>\n\n            <button ion-button block>{{\'Submit\' | translate}}</button>\n\n        </div>\n\n    </form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\account-edit-modal\account-edit-modal.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_ionic_util__["a" /* IonicUtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_ionic_util__["a" /* IonicUtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_parse_file__["a" /* ParseFileProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]])
+    ], AccountEditModalPage);
+    return AccountEditModalPage;
+}());
+
+//# sourceMappingURL=account-edit-modal.js.map
+
+=======
+>>>>>>> 1b89dc84076ca100ab63245d2cfeea584dc887a3
 /***/ })
 
 },[248]);
