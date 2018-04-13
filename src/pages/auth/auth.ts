@@ -262,18 +262,18 @@ export class AuthPage {
                                 .then(this.provider.updateWithFacebookData())
                                 .then(result => {
                                     this.util.endLoading();
-                                    this.navCtrl.push(TabAccountSettingsPage);
+                                    this.onPageTabs();
                                 });
 
                         } else {
                             // Old UserProvider
                             console.info('UserProvider logged in through Facebook!', user);
-                            this.navCtrl.push(TabAccountSettingsPage);
+                            this.onPageTabs();
                             this.provider.facebookSyncProfile(fbData)
                                 .then(this.provider.updateWithFacebookData())
                                 .then(result => {
                                     this.util.endLoading();
-                                    this.navCtrl.push(TabAccountSettingsPage);
+                                    this.onPageTabs();
                                 });
 
                         }

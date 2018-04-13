@@ -7,7 +7,7 @@ import {AboutPage} from "../about/about";
 import {LanguageModalComponent} from "../../components/language-modal/language-modal";
 import {UserProvider} from "../../providers/user";
 //import {ChatChannelProvider} from "../../providers/chat-channel";
-
+import {AuthPage} from "../../pages/auth/auth";
 
 
 @Component({
@@ -51,7 +51,7 @@ export class TabAccountSettingsPage {
         this.User.cleanDBFollowing();
         // this.Gallery.cleanCache()
         // this.ChatChannel.cleanDB();
-        // this.app.getRootNav().setRoot(IntroPage);
+    this.app.getRootNav().setRoot(AuthPage);
     }
 
 }

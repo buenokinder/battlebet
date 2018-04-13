@@ -5,6 +5,7 @@ import { AboutPage } from '../about/about';
 import { ProfilePage } from '../profile/profile';
 import { HomePage } from '../home/home';
 import {TabAccountSettingsPage} from "../tab-account-settings/tab-account-settings";
+import {TabAccountPage} from "../tab-account/tab-account";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class TabsPage {
   tab2Root = AboutPage;
   tab4Root = GamesPage;
 
-  tabProfile = ProfilePage;
+  tabProfile = TabAccountPage;
   tabAccount = TabAccountSettingsPage;
 
   tabActivityBadge: number = 0;

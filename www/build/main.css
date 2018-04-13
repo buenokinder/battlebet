@@ -34541,3 +34541,40 @@ page-profile .text-center b {
 page-profile .text-center {
   text-align: center;
 }
+
+page-tab-account .profile-top ion-row ion-col p {
+  padding: 0;
+  margin: 0;
+  color: #A5A7AA;
+}
+
+page-tab-account .profile-desc h3 {
+  font-size: 1.2em;
+  margin: 5px;
+}
+
+page-tab-account .profile-desc p {
+  margin: 5px;
+}
+
+page-tab-account .img-avatar {
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 80px;
+  width: 80px;
+}
+
+page-tab-account .img-avatar img {
+  height: 80px;
+  width: 80px;
+}
+
+page-tab-account .text-center {
+  display: block;
+  text-align: center;
+}
+
+page-tab-account .text-center b {
+  font-size: 1.3em;
+}

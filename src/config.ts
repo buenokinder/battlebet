@@ -2,9 +2,13 @@
 export const APP_NAME: string = 'battlebet';
 
 // Parse
-export const PARSE_APP_ID: string     = '5d32ac40-589e-4c7b-8f74-99d026a87b20';
+export const PARSE_APP_ID: string     = '8OUE80mlqO62r3cOyzGmFusrfQGBlAFKwUNFoziN';
 
-export const PARSE_SERVER_URL: string = 'http://localhost:1337/parse/';
+export const PARSE_JAVASCRIPT_ID: string     = '91UxV8Zzrlzcuh91YRBif96sVZSNg56R1uXwjAzh';
+
+export const PARSE_MASTER_KEY: string     = 'hP4oLvSYXRvvf0pq9Hp38Y4kzgQf54g2KQ8VlII7';
+
+export const PARSE_SERVER_URL: string = 'https://parseapi.back4app.com/';
 
 
 // Google Maps
