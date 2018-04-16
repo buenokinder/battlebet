@@ -9,7 +9,9 @@ import {MarketPage} from "../market/market";
 })
 export class FixturePage {
     markets: any;
-    fixture: any;
+    fixtureId: any;
+    fixtureName: any;
+    fixtureGameDate: any;
 
 
   constructor(public navCtrl: NavController, public oddsProvider: OddsProvider, public navParams : NavParams) {
@@ -20,14 +22,17 @@ export class FixturePage {
     getMarkets(id) {
         this.oddsProvider.getMarkets(id)
             .then(data => {
-                this.fixture = data["data"]["name"];
+                this.fixtureName = data["data"]["name"];
+                this.fixtureId = data["data"]["id"];
+                this.fixtureGameDate = data["data"]["startTime"];
+
                 this.markets = data["data"]["markets"];
                 console.log(this.markets);
             });
     }
 
-    pushMarket(id) {
-        this.navCtrl.push(MarketPage, {id});
+    pushMarket(id,name,fixtureId,fixtureName,fixtureGameDate) {
+        this.navCtrl.push(MarketPage, {id,name,fixtureName,fixtureId,fixtureGameDate});
     }
 
 }

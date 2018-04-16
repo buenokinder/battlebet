@@ -33,6 +33,7 @@ import {UserPasswordPage} from "../pages/user-password/user-password";
 import {LanguageModalComponent} from "../components/language-modal/language-modal";
 import {TabAccountSettingsPage} from "../pages/tab-account-settings/tab-account-settings";
 import { OddsProvider } from '../providers/odds/odds';
+import { UserBetProvider } from '../providers/user-bet';
 import {MarketPage} from "../pages/market/market";
 
 export function createTranslateLoader(http: Http) {
@@ -96,6 +97,7 @@ export function createTranslateLoader(http: Http) {
     SplashScreen,
     Facebook,
     FacebookService,
+      UserBetProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OddsProvider
   ]

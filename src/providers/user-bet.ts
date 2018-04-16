@@ -28,8 +28,10 @@ export class UserBetProvider {
         });       
     }
 
-    bet(username: string, betamount: number, selectionId: number): Promise<any> {
-        return Parse.Cloud.run('bet', {username: username, betamount: betamount, selectionId: selectionId})
+    bet(betamount: number, selectionId: number[],marketName:string,fixtureId:number, fixtureName:string, fixtureGameDate:string): Promise<any> {
+        let currentUser = Parse.User.current();
+        let currentuserId =  currentUser.get('id');
+        return Parse.Cloud.run('bet', {user: currentuserId, betAmount: betamount, selectionId: selectionId,marketName: marketName, fixtureId: fixtureId,fixtureName:fixtureName,fixtureGameDate:fixtureGameDate})
     }
 
     getBets(status: string) {
