@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'Bet'| translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+    <ion-item *ngFor="let selection of selectedselections">
+      <ion-avatar item-start>
+        <ion-icon name="ios-football" ></ion-icon>
+      </ion-avatar>
+      <h2>{{selection.name}}</h2>
+      <ion-note item-end>{{selection.odd}}</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Odd</ion-label>
+      <ion-input disabled="true" placeholder="{{totalodd}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Value</ion-label>
+      <ion-input [(ngModel)]="betamount" type="text"></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button color="primary" (click)="makebet(betamount)" block>Bet</button>
+  </div>
+
+</ion-content>

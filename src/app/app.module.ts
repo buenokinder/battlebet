@@ -35,6 +35,8 @@ import {TabAccountSettingsPage} from "../pages/tab-account-settings/tab-account-
 import { OddsProvider } from '../providers/odds/odds';
 import { UserBetProvider } from '../providers/user-bet';
 import {MarketPage} from "../pages/market/market";
+import {BetPage} from "../pages/bet/bet";
+import { GlobalsProvider } from '../providers/globals/globals';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './i18n', '.json');
@@ -48,6 +50,7 @@ export function createTranslateLoader(http: Http) {
       GamesPage,
       MarketPage,
       FixturePage,
+      BetPage,
     HomePage,
     TabsPage,
     AuthPage,
@@ -82,6 +85,7 @@ export function createTranslateLoader(http: Http) {
       MarketPage,
       FixturePage,
       GamesPage,
+      BetPage,
     HomePage,
     TabsPage,
     AuthPage,
@@ -99,7 +103,8 @@ export function createTranslateLoader(http: Http) {
     FacebookService,
       UserBetProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    OddsProvider
+    OddsProvider,
+    GlobalsProvider
   ]
 })
 export class AppModule {

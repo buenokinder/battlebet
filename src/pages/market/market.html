@@ -4,12 +4,16 @@
       {{fixtureName}} | {{marketName}}
     </ion-title>
   </ion-navbar>
+    <ion-toolbar>
+        <ion-title>Odd: {{currentOdd}}</ion-title>
+        <button ion-button (click)="pushBet()">Bet</button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
       <ion-list>
-        <button (click)="selectOdd(selection.odd,selection.id)" *ngFor="let selection of selections" ion-button>{{selection.name}}<br>{{selection.odd}}</button>
+        <button *ngFor="let selection of selections" (click)="selectOdd(selection)"  ion-button>{{selection.name}}<br>{{selection.odd}}</button>
       </ion-list>
 
     <ion-list>

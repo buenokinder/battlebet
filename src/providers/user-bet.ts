@@ -28,6 +28,13 @@ export class UserBetProvider {
         });       
     }
 
+    betmultiple(betamount:number, selections)
+    {
+        let currentUser = Parse.User.current();
+        let currentuserId =  currentUser.get('id');
+        return Parse.Cloud.run('bet', {user: currentuserId, betAmount: betamount,selections: selections});
+    }
+
     bet(betamount: number, selectionId: number[],marketName:string,fixtureId:number, fixtureName:string, fixtureGameDate:string): Promise<any> {
         let currentUser = Parse.User.current();
         let currentuserId =  currentUser.get('id');
