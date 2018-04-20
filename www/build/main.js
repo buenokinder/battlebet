@@ -205,10 +205,10 @@ var UserBetProvider = (function () {
         var currentuserId = currentUser.get('id');
         return Parse.Cloud.run('bet', { user: currentuserId, betAmount: betamount, selections: selections });
     };
-    UserBetProvider.prototype.bet = function (betamount, selectionId, marketName, fixtureId, fixtureName, fixtureGameDate) {
+    UserBetProvider.prototype.bet = function (betamount, selectionId, marketName, fixtureId, fixtureName, fixtureGameDate, odd) {
         var currentUser = Parse.User.current();
         var currentuserId = currentUser.get('id');
-        return Parse.Cloud.run('bet', { user: currentuserId, betAmount: betamount, selectionId: selectionId, marketName: marketName, fixtureId: fixtureId, fixtureName: fixtureName, fixtureGameDate: fixtureGameDate });
+        return Parse.Cloud.run('bet', { odd: odd, user: currentuserId, betAmount: betamount, selectionId: selectionId, marketName: marketName, fixtureId: fixtureId, fixtureName: fixtureName, fixtureGameDate: fixtureGameDate });
     };
     UserBetProvider.prototype.getBets = function (status) {
         var currentUser = Parse.User.current();
@@ -818,6 +818,7 @@ var FixturePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_bet__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_globals_globals__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__bet_bet__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__games_games__ = __webpack_require__(243);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -833,13 +834,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var MarketPage = (function () {
-    function MarketPage(navCtrl, oddsProvider, navParams, userBetProvider, globalsProvider) {
+    function MarketPage(navCtrl, oddsProvider, navParams, userBetProvider, globalsProvider, alertCtrl) {
         this.navCtrl = navCtrl;
         this.oddsProvider = oddsProvider;
         this.navParams = navParams;
         this.userBetProvider = userBetProvider;
         this.globalsProvider = globalsProvider;
+        this.alertCtrl = alertCtrl;
         this.getSelections(this.navParams.get('id'));
         this.fixtureName = (this.navParams.get('fixtureName'));
         this.fixtureId = (this.navParams.get('fixtureId'));
@@ -866,19 +870,31 @@ var MarketPage = (function () {
     MarketPage.prototype.selectOdd = function (selection) {
         this.selectedodd = selection.odd;
         this.selectedselection = selection.id;
+        this.selectedselectionname = selection.name;
         this.globalsProvider.pushSelection(selection);
     };
-    MarketPage.prototype.makebet = function (selection, amount) {
-        this.userBetProvider.bet(amount, selection, this.marketName, this.fixtureId, this.fixtureName, this.fixtureGameDate);
+    MarketPage.prototype.showAlert = function (amount) {
+        var alert = this.alertCtrl.create({
+            title: 'Bet Success!',
+            subTitle: 'Bet Made on' + this.selectedselectionname + ' - ' + 'Value :' + amount + ',  Good Luck!',
+            buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__games_games__["a" /* GamesPage */]);
+    };
+    MarketPage.prototype.makebet = function (selection, amount, odd) {
+        this.userBetProvider.bet(amount, selection, this.marketName, this.fixtureId, this.fixtureName, this.fixtureGameDate, odd).then(function () {
+            this.showAlert(amount);
+        });
     };
     MarketPage = MarketPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-market',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\market\market.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{fixtureName}} | {{marketName}}\n\n    </ion-title>\n\n  </ion-navbar>\n\n    <ion-toolbar>\n\n        <ion-title>Odd: {{currentOdd}}</ion-title>\n\n        <button ion-button (click)="pushBet()">Bet</button>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n      <ion-list>\n\n        <button *ngFor="let selection of selections" (click)="selectOdd(selection)"  ion-button>{{selection.name}}<br>{{selection.odd}}</button>\n\n      </ion-list>\n\n\n\n    <ion-list>\n\n\n\n        <ion-item>\n\n            <ion-label fixed>Odd</ion-label>\n\n            <ion-input *ngIf="selectedodd" disabled="true" placeholder="{{selectedodd}}"></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n        <ion-label fixed>Value</ion-label>\n\n        <ion-input [(ngModel)]="betamount" type="text"></ion-input>\n\n    </ion-item>\n\n\n\n\n\n    </ion-list>\n\n\n\n    <div padding>\n\n        <button *ngIf="selectedselection" ion-button color="primary" (click)="makebet(selectedselection,betamount)" block>Bet</button>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\market\market.html"*/
+            selector: 'page-market',template:/*ion-inline-start:"C:\work\apps\battle\battlebet\src\pages\market\market.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{fixtureName}} | {{marketName}}\n\n    </ion-title>\n\n  </ion-navbar>\n\n    <ion-toolbar>\n\n        <ion-title>Odd: {{currentOdd}}</ion-title>\n\n        <button ion-button (click)="pushBet()">Bet</button>\n\n    </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n      <ion-list>\n\n        <button *ngFor="let selection of selections" (click)="selectOdd(selection)"  ion-button>{{selection.name}}<br>{{selection.odd}}</button>\n\n      </ion-list>\n\n\n\n    <ion-list>\n\n\n\n        <ion-item>\n\n            <ion-label fixed>Odd</ion-label>\n\n            <ion-input *ngIf="selectedodd" disabled="true" placeholder="{{selectedodd}}"></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n        <ion-label fixed>Value</ion-label>\n\n        <ion-input [(ngModel)]="betamount" type="text"></ion-input>\n\n    </ion-item>\n\n\n\n\n\n    </ion-list>\n\n\n\n    <div padding>\n\n        <button *ngIf="selectedselection" ion-button color="primary" (click)="makebet(selectedselection,betamount,selectedodd)" block>Bet</button>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\work\apps\battle\battlebet\src\pages\market\market.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_user_bet__["a" /* UserBetProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_globals_globals__["a" /* GlobalsProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_odds_odds__["a" /* OddsProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_user_bet__["a" /* UserBetProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_user_bet__["a" /* UserBetProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_globals_globals__["a" /* GlobalsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_globals_globals__["a" /* GlobalsProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _f || Object])
     ], MarketPage);
     return MarketPage;
-    var MarketPage_1;
+    var MarketPage_1, _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=market.js.map
