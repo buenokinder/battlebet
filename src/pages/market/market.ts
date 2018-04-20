@@ -71,9 +71,11 @@ export class MarketPage {
    makebet(selection,amount,odd)
    {
 
-       this.userBetProvider.bet(amount,selection,this.marketName,this.fixtureId,this.fixtureName,this.fixtureGameDate,odd).then(function(){
+       this.userBetProvider.bet(amount,selection,this.marketName,this.fixtureId,this.fixtureName,this.fixtureGameDate,odd).then(data => {
            this.showAlert(amount);
+           console.log(data);
        });
+
 
 
    }
