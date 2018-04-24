@@ -34464,6 +34464,31 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+photo-list .img-gallery {
+  display: block;
+  min-height: 150px;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+photo-list ion-card {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+photo-list ion-card ion-list .item-block {
+  min-height: 2.4rem;
+}
+
+photo-list ion-card ion-list ion-item {
+  border: none;
+}
+
+photo-list ion-card ion-list ion-item ion-label {
+  font-size: 0.8em;
+  margin: 7px 0 !important;
+}
+
 ion-photo-crop-modal .invert {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);

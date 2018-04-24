@@ -31,6 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {AccountEditModalPage} from "../pages/account-edit-modal/account-edit-modal";
 import {UserPasswordPage} from "../pages/user-password/user-password";
 import {LanguageModalComponent} from "../components/language-modal/language-modal";
+import { BetListOpenComponent} from "../components/bet-list-open/bet-list-open";
 import {TabAccountSettingsPage} from "../pages/tab-account-settings/tab-account-settings";
 import { OddsProvider } from '../providers/odds/odds';
 import { UserBetProvider } from '../providers/user-bet';
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: Http) {
     AccountEditModalPage,
     UserPasswordPage,
     LanguageModalComponent,
+    BetListOpenComponent,
     TabAccountSettingsPage,
     TabAccountPage
     
@@ -93,6 +95,7 @@ export function createTranslateLoader(http: Http) {
     AccountEditModalPage,
     UserPasswordPage,
     LanguageModalComponent,
+    BetListOpenComponent,
     TabAccountSettingsPage,
     TabAccountPage
   ],
