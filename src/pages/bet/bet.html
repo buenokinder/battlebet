@@ -5,15 +5,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-list inset>
-    <ion-item *ngFor="let selection of selectedselections">
-      <ion-avatar item-start>
-        <ion-icon name="ios-football" ></ion-icon>
-      </ion-avatar>
-      <h2>{{selection.name}}</h2>
-      <ion-note item-end>{{selection.odd}}</ion-note>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col width="30%" col-4 *ngFor="let selection of selectedselections"> {{selection.name}} : {{selection.odd}}</ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-list>
 

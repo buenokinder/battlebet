@@ -9,6 +9,7 @@ import _ from "underscore";
 import { IonicStorageModule } from "@ionic/storage";
 import { Facebook } from '@ionic-native/facebook';
 import { HttpClientModule } from '@angular/common/http';
+import { NavController } from 'ionic-angular';
 // External Libs
 // Providers
 import {ProvidersModule} from "../providers/providers.module";
@@ -64,18 +65,21 @@ export function createTranslateLoader(http: Http) {
   ],
   imports: [
       HttpClientModule,
-    BrowserModule,
-    ProvidersModule,
-    IonicStorageModule.forRoot({
-      name: '__battlebet',
-      driverOrder: ['indexeddb', 'sqlite', 'websql']
-    }) ,
-    TranslateModule.forRoot({
-      provide   : TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps      : [Http]
-    }),
-    IonicModule.forRoot(MyApp)
+      BrowserModule,
+      ProvidersModule,
+      IonicStorageModule.forRoot({
+          name: '__battlebet',
+          driverOrder: ['indexeddb', 'sqlite', 'websql']
+      }) ,
+      TranslateModule.forRoot({
+          provide   : TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps      : [Http]
+      }),
+      IonicModule.forRoot(MyApp, {
+          tabsHideOnSubPages:false,
+          swipeBackEnabled: true
+      }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

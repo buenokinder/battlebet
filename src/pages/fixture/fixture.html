@@ -1,23 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{fixture}}
+      {{fixtureName}}
     </ion-title>
   </ion-navbar>
-  <ion-toolbar>
-    <ion-title>Odd: {{currentOdd}}</ion-title>
-    <button ion-button (click)="pushBet()">Bet</button>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list inset>
-    <ion-item *ngFor="let market of markets">
-      <ion-avatar item-start>
-        <ion-icon name="ios-football" ></ion-icon>
-      </ion-avatar>
-      <h2>{{market.name}}</h2>
-      <button ion-button color="secondary" block (click)="pushMarket(market.id,market.name,fixtureId,fixtureName,fixtureGameDate)">Bet</button>
-    </ion-item>
+  <ion-list>
+    <button ion-item *ngFor="let market of markets" (click)="pushMarket(market.id,market.name,fixtureId,fixtureName,fixtureGameDate)">
+      {{market.name}}
+    </button>
   </ion-list>
 </ion-content>
+
+
+
+

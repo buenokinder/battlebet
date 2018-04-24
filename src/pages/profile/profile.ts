@@ -28,6 +28,7 @@ export class ProfilePage {
         galleriesTotal : 0,
         followersTotal : 0,
         followingsTotal: 0,
+        coins: 0,
     };
 
     params: IParams = {

@@ -54,6 +54,7 @@ export class TabAccountPage {
         console.log(this.username);
         this.userData.profile(this.username).then(profile => {
             this.profile = profile;
+            console.log(this.profile);
             this.loading = false;
             this.onSelectType();
         });

@@ -27,17 +27,17 @@
                 <ion-row>
                     <ion-col class="text-center">
                         <ion-spinner *ngIf="loading"></ion-spinner>
-                        <b *ngIf="!loading">{{ profile.galleriesTotal || 0}}</b>
-                        <p>{{'posts'|translate}}</p>
+                        <b *ngIf="!loading"><ion-icon name="star" color="bright"></ion-icon><br>{{ profile.coins || 0}}</b>
+                        <p>{{'coins'|translate}}</p>
                     </ion-col>
                     <ion-col class="text-center">
                         <ion-spinner *ngIf="loading"></ion-spinner>
-                        <b *ngIf="!loading">{{ profile.followersTotal || 0}}</b>
+                        <b *ngIf="!loading"><ion-icon name="person" color="facebook"></ion-icon><br>{{ profile.followersTotal || 0}}</b>
                         <p>{{'followers'|translate}}</p>
                     </ion-col>
                     <ion-col class="text-center">
                         <ion-spinner *ngIf="loading"></ion-spinner>
-                        <b *ngIf="!loading">{{ profile.followingsTotal || 0}}</b>
+                        <b *ngIf="!loading"><ion-icon name="person-add" color="facebook"></ion-icon><br>{{ profile.followingsTotal || 0}}</b>
                         <p>{{'following'|translate}}</p>
                     </ion-col>
                 </ion-row>
