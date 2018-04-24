@@ -35,10 +35,10 @@ export class UserBetProvider {
         return Parse.Cloud.run('bet', {user: currentuserId, betAmount: betamount,selections: selections});
     }
 
-    bet(betamount: number, selectionId: number[],marketName:string,fixtureId:number, fixtureName:string, fixtureGameDate:string, odd:number): Promise<any> {
+    bet(betamount: number, selectionId: number,marketName:string,fixtureId:number, fixtureName:string, fixtureGameDate:string, odd:string): Promise<any> {
         let currentUser = Parse.User.current();
         let currentuserId =  currentUser.get('id');
-        return Parse.Cloud.run('bet', {odd: odd, user: currentuserId, betAmount: betamount, selectionId: selectionId,marketName: marketName, fixtureId: fixtureId,fixtureName:fixtureName,fixtureGameDate:fixtureGameDate})
+        return Parse.Cloud.run('bet', {user: currentuserId, betAmount: betamount, selectionId: selectionId,marketName: marketName, fixtureId: fixtureId,fixtureName:fixtureName,fixtureGameDate:fixtureGameDate, odd:odd});
     }
 
     getBets(status: string) {
@@ -47,7 +47,7 @@ export class UserBetProvider {
 
         var ParseQuery = new Parse.Query(this._ParseObject);
         ParseQuery.equalTo("status", status);
-        
+
         return ParseQuery.find();
     }
 
